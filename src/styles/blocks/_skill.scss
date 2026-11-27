@@ -1,0 +1,20 @@
+// Sigil identity: skill. Generated from the reference stylesheet by tools/split-styles.py.
+.has-motion [data-reveal]:not(.is-in) .meter__fill { transform: scaleX(0); }
+/* ---------- Skills ---------- */
+.viewbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.skilllist { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 36px clamp(28px, 5cqi, 72px); }
+.meters { display: flex; flex-direction: column; gap: 14px; }
+.meter { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: baseline; }
+.meter__name { font-weight: 700; }
+.meter__val { font-variant-numeric: tabular-nums; color: var(--fg-soft); }
+.meter__bar { grid-column: 1 / -1; height: 10px; border: 1px solid var(--fg); overflow: hidden; }
+.meter__fill { display: block; height: 100%; width: calc(var(--v) * 100%); background: var(--accent); transform-origin: left; transition: transform 1s var(--snap) 0.15s; }
+.langs-wrap { margin-top: clamp(36px, 5cqi, 64px); }
+.langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0 40px; border-top: 1px solid var(--fg); }
+.lang { display: flex; align-items: center; gap: 12px; min-height: 52px; border-bottom: 1px solid var(--line); }
+.lang__name { font-weight: 700; }
+.lang__level { color: var(--fg-soft); margin-right: auto; }
+.lang__name:only-child, .lang__name:last-child { margin-right: auto; }
+.lang__dots { display: inline-flex; gap: 3px; }
+.lang__dots span { width: 12px; height: 12px; border: 1px solid var(--fg); }
+.lang__dots .is-on { background: var(--accent); }

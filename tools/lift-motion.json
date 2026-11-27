@@ -1,0 +1,330 @@
+{
+ "reference": "/home/claude/orbit-cv/src",
+ "out": "/home/claude/sigil-angular/src/app",
+ "jobs": [
+  {
+   "src": "core/dom.js",
+   "out": "core/engine/dom-builder.ts",
+   "class": "DomBuilder",
+   "entries": [
+    "h"
+   ],
+   "header": [
+    "import { Injectable } from '@angular/core';",
+    "",
+    "/**",
+    " * Builds DOM elements for the imperative effects (pointer, film, toasts), which draw",
+    " * outside Angular's templates. Text is always set as text, never parsed as HTML.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ]
+  },
+  {
+   "src": "motion/dither.js",
+   "out": "core/engine/dither-engine.ts",
+   "class": "DitherEngine",
+   "entries": [
+    "createDither"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "import { hash } from '@domain/text/hash';",
+    "",
+    "/**",
+    " * The dither layer: one shared WebGL context that draws every pattern and image as an",
+    " * 8x8 ordered dither in the chapter's two colours.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "imports": {
+    "hash": "hash"
+   },
+   "patch": [
+    [
+     "    invalidate() { dirty = true; kick(); },",
+     "    /** Stop drawing a tile that has left the page. */\n    forget(canvas) { const gone = canvas && canvas._tile; if (gone) { tiles.delete(gone); io?.unobserve(canvas); } },\n    invalidate() { dirty = true; kick(); },"
+    ]
+   ]
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/text-scrambler.ts",
+   "class": "TextScrambler",
+   "entries": [
+    "scramble",
+    "watchScramble"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * Labels that resolve out of random glyphs when pointed at.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/proximity-type.ts",
+   "class": "ProximityType",
+   "entries": [
+    "proximityType"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * Display type that reacts to the pointer through the font's own axes.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/pointer-cursor.ts",
+   "class": "PointerCursor",
+   "entries": [
+    "customCursor"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "import { DomBuilder } from './dom-builder';",
+    "",
+    "/**",
+    " * The custom pointer: a square that inverts what it crosses and carries a verb.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [
+    "private readonly dom = inject(DomBuilder);",
+    "private readonly h = (tag: string, attrs?: any, ...kids: any[]): any => this.dom.h(tag, attrs, ...kids);"
+   ],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/magnetic-pull.ts",
+   "class": "MagneticPull",
+   "entries": [
+    "magnetic"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * Controls that lean toward the pointer.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/marquee-runner.ts",
+   "class": "MarqueeRunner",
+   "entries": [
+    "runMarquees"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * Running strips, pushed by scroll speed.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/drag-scroller.ts",
+   "class": "DragScroller",
+   "entries": [
+    "dragScroll"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * Sideways strips that can be dragged, with inertia.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/pile-physics.ts",
+   "class": "PilePhysics",
+   "entries": [
+    "physicsPile"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * The skill pile: rigid bodies you can pick up and throw.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/fx.js",
+   "out": "core/engine/reading-sweep.ts",
+   "class": "ReadingSweep",
+   "entries": [
+    "wordReveal"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "",
+    "/**",
+    " * The opening statement read word by word as the page scrolls.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [],
+   "imports": {
+    "h": "this.h"
+   }
+  },
+  {
+   "src": "motion/scroll.js",
+   "out": "core/engine/count-up.ts",
+   "class": "CountUp",
+   "entries": [
+    "countUp"
+   ],
+   "public": [
+    "countUp"
+   ],
+   "header": [
+    "import { Injectable } from '@angular/core';",
+    "",
+    "/**",
+    " * Counts a figure up to its value when it comes into view.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ]
+  },
+  {
+   "src": "motion/moonshot.js",
+   "out": "core/engine/moon-film.ts",
+   "class": "MoonFilm",
+   "entries": [
+    "playMoonshot"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "import { DomBuilder } from './dom-builder';",
+    "import { Translator } from '../i18n/translator';",
+    "",
+    "/**",
+    " * The moon film: a ten-second WebGL sequence in the page's two colours, played when a",
+    " * skill is thrown hard enough.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [
+    "private readonly dom = inject(DomBuilder);",
+    "private readonly h = (tag: string, attrs?: any, ...kids: any[]): any => this.dom.h(tag, attrs, ...kids);",
+    "private readonly translator = inject(Translator);",
+    "private readonly t = (source: string, vars?: Record<string, string | number>): string => this.translator.t(source, vars);"
+   ],
+   "imports": {
+    "h": "this.h",
+    "t": "this.t"
+   }
+  },
+  {
+   "src": "motion/eggs.js",
+   "out": "core/engine/hidden-interactions.ts",
+   "class": "HiddenInteractions",
+   "entries": [
+    "installEggs"
+   ],
+   "header": [
+    "import { Injectable, inject } from '@angular/core';",
+    "import { DomBuilder } from './dom-builder';",
+    "import { Translator } from '../i18n/translator';",
+    "import { Signature } from '../signature/signature';",
+    "import { MoonFilm } from './moon-film';",
+    "",
+    "/**",
+    " * The hidden interactions: the moon launch, zero gravity, typed words, the signature's",
+    " * secret and a note in the console.",
+    " * Lifted from the reference engine; values are loosely typed inside.",
+    " */",
+    "/* eslint-disable @typescript-eslint/no-explicit-any */",
+    "@Injectable({ providedIn: 'root' })"
+   ],
+   "prelude": [
+    "private readonly dom = inject(DomBuilder);",
+    "private readonly h = (tag: string, attrs?: any, ...kids: any[]): any => this.dom.h(tag, attrs, ...kids);",
+    "private readonly translator = inject(Translator);",
+    "private readonly t = (source: string, vars?: Record<string, string | number>): string => this.translator.t(source, vars);",
+    "private readonly signature = inject(Signature);",
+    "private readonly film = inject(MoonFilm);"
+   ],
+   "imports": {
+    "h": "this.h",
+    "t": "this.t",
+    "sigilPath": "this.signature.path.bind(this.signature)",
+    "playMoonshot": "this.film.playMoonshot.bind(this.film)"
+   },
+   "patch": [
+    [
+     "No framework, no dependencies: a WebGL dither shader",
+     "The Angular edition: signals, standalone components, and underneath them a WebGL dither shader"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+// Sigil identity: stop. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Journey: one stop per position ---------- */
+.track { overflow-x: auto; overscroll-behavior-x: contain; margin-left: calc(-1 * var(--gut)); margin-right: calc(-1 * var(--gut-r)); padding: 0 var(--gut-r) 18px var(--gut); scrollbar-width: thin; scrollbar-color: var(--fg) transparent; }
+.track.is-dragging { cursor: grabbing; user-select: none; }
+.track__list { display: flex; width: max-content; border-top: 1px solid var(--fg); border-left: 1px solid var(--fg); }
+.stop { display: flex; flex-direction: column; gap: 16px; width: min(440px, 84cqi); padding: 20px 22px 26px; border-right: 1px solid var(--fg); border-bottom: 1px solid var(--fg); }
+.stop__when { display: flex; align-items: center; gap: 12px; color: var(--fg-soft); }
+.stop__n { padding: 3px 7px; background: var(--fg); color: var(--ground); font-weight: 700; }
+.stop__title { font-size: clamp(2rem, 4.4cqi, 3.2rem); overflow-wrap: anywhere; text-wrap: balance; }
+.stop__co { padding: 2px 6px; background: var(--fg); color: var(--ground); }
+.stop__role { font-weight: 700; }
+.stop__text { color: var(--fg-soft); }
+.stop__text strong { color: var(--fg); }
+.stop__clients { color: var(--fg-soft); }
+.stop .chips { margin-top: auto; padding-top: 6px; }
+.more summary { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; font-weight: 700; list-style: none; }
+.more summary::-webkit-details-marker { display: none; }
+.more summary::before { content: "+"; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border: 1px solid var(--fg); }
+.more[open] summary::before { content: "–"; background: var(--fg); color: var(--ground); }
+.more .bases { margin-top: 8px; font-size: 1rem; }
+/* ---------- Positions made of parts ---------- */
+.stop__cos { display: flex; flex-wrap: wrap; gap: 6px; }
+.stop__cos .stop__co { font-family: var(--mono); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
+.stop__dive { align-self: flex-start; gap: 10px; margin-top: auto; min-height: 44px !important; }
+.split { display: flex; width: 100%; border: 1px solid var(--fg); }
+.split__part { flex: var(--share, 1) 1 0; min-width: min-content; display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; }
+.split__part + .split__part { border-left: 1px solid var(--fg); }
+.split__part--0 { background: var(--accent); color: var(--on-accent); }
+.split__part--1 { background: var(--fg); color: var(--ground); }
+.split__name { font-weight: 700; }
+.split--sm { grid-column: 1; align-self: start; }
+.split--sm .split__part { padding: 6px 8px; font-size: 0.6875rem; }
+.track.is-scroll { cursor: grab; }

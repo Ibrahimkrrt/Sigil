@@ -1,0 +1,60 @@
+@for (chapter of chapters(); track chapter.id; let i = $index) {
+  <section #section class="ch" [class]="'ch--' + chapter.type" [id]="chapter.id" [attr.aria-labelledby]="chapter.type === 'custom' && !chapter.title ? null : chapter.id + '-title'" [attr.aria-label]="chapter.type === 'custom' && !chapter.title ? chapter.nav : null" [attr.data-accent]="chapter.accent" [attr.data-ground]="chapter.ground">
+    <div class="ch__in">
+      @switch (chapter.type) {
+        @case ('hero') {
+          <sg-hero-chapter [chapter]="chapter" [model]="model()" [nextId]="chapters()[1]?.id ?? null" />
+        }
+        @case ('summary') {
+          <sg-summary-chapter [chapter]="chapter" [index]="i" [profile]="model().profile" />
+        }
+        @case ('experience') {
+          <sg-journey-chapter [chapter]="chapter" [index]="i" [model]="model()" [rolesChapterId]="rolesChapterId()" />
+        }
+        @case ('roles') {
+          <sg-roles-chapter [chapter]="chapter" [index]="i" [model]="model()" />
+        }
+        @case ('achievements') {
+          <header sgChapterHeader [chapter]="chapter" [index]="i"></header>
+          <dl sgStatList [stats]="model().achievements"></dl>
+        }
+        @case ('milestones') {
+          <header sgChapterHeader [chapter]="chapter" [index]="i"></header>
+          <ol sgTimelineList [items]="model().milestones"></ol>
+        }
+        @case ('projects') {
+          <sg-projects-chapter [chapter]="chapter" [index]="i" [model]="model()" />
+        }
+        @case ('skills') {
+          <sg-skills-chapter [chapter]="chapter" [index]="i" [model]="model()" />
+        }
+        @case ('education') {
+          <sg-credentials-chapter [chapter]="chapter" [index]="i" [model]="model()" />
+        }
+        @case ('awards') {
+          <header sgChapterHeader [chapter]="chapter" [index]="i"></header>
+          <ul class="rows rows--lg">
+            @for (award of model().awards; track $index) {
+              <li sgInfoRow [heading]="award.title" [sub]="award.issuer" [when]="award.year"></li>
+            }
+          </ul>
+        }
+        @case ('interests') {
+          <header sgChapterHeader [chapter]="chapter" [index]="i"></header>
+          <ul class="biglist">
+            @for (interest of model().interests; track $index) {
+              <li [sgReveal]="$index">{{ interest }}</li>
+            }
+          </ul>
+        }
+        @case ('contact') {
+          <sg-contact-chapter [chapter]="chapter" [index]="i" [model]="model()"><ng-content select="[contactActions]" /></sg-contact-chapter>
+        }
+        @default {
+          <sg-custom-chapter [chapter]="chapter" [index]="i" />
+        }
+      }
+    </div>
+  </section>
+}
+<footer sgSiteFooter [model]="model()" [topId]="chapters()[0]?.id ?? ''"></footer>

@@ -1,0 +1,23 @@
+// Sigil identity: card. Generated from the reference stylesheet by tools/split-styles.py.
+.num { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 26px; padding: 0 6px; flex: none; background: var(--fg); color: var(--ground); font-family: var(--mono); font-size: 0.75rem; font-weight: 700; }
+/* ---------- Work ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: clamp(20px, 3cqi, 40px); }
+.card { display: flex; flex-direction: column; border: 1px solid var(--fg); background: var(--ground); transition: box-shadow 0.2s var(--snap), translate 0.2s var(--snap); }
+.card:hover { box-shadow: 8px 8px 0 var(--accent); translate: -4px -4px; }
+.card--feature { grid-column: 1 / -1; }
+.card__media { border: 0; border-bottom: 1px solid var(--fg); aspect-ratio: 16 / 9; }
+.card--feature .card__media { aspect-ratio: 21 / 9; }
+.card__body { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 22px 16px; }
+.card__idx { color: var(--fg-soft); }
+.card__title { font-size: clamp(2rem, 4.6cqi, 3.6rem); }
+.card__text { max-width: 60ch; color: var(--fg-soft); }
+.card__text strong { color: var(--fg); }
+.case { width: min(920px, calc(100% - 24px)); max-height: min(90vh, 960px); padding: 0; border: 2px solid var(--fg); background: var(--ground); color: var(--fg); overflow: auto; box-shadow: 12px 12px 0 var(--accent); }
+.case::backdrop { background: rgba(11, 11, 13, 0.78); }
+.is-animated .case[open] { animation: sigil-wipe 0.45s steps(10, end) both; }
+.case__in { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding: clamp(22px, 5vw, 48px); }
+.case__title { padding-right: 64px; font-size: clamp(2.2rem, 6vw, 4.4rem); }
+.case__close { position: absolute; top: 16px; right: 16px; }
+.case .tiles, .case .gallery, .case .steps { width: 100%; }
+.steps { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.steps li { display: flex; gap: 14px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); }

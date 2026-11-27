@@ -1,0 +1,56 @@
+<div class="rec" data-view="recruiter">
+  <sg-recruiter-header [profile]="model().profile" [contact]="model().contact">
+    <ng-content select="[recruiterActions]" />
+  </sg-recruiter-header>
+
+  <div class="body">
+    <div class="main">
+      @if (model().profile.summary.length) {
+        <sg-recruiter-section id="summary" [heading]="'Summary' | t">
+          @for (paragraph of model().profile.summary; track $index) {
+            <p><sg-rich-text [text]="paragraph" /></p>
+          }
+        </sg-recruiter-section>
+      }
+      @if (model().experience.length) {
+        <sg-recruiter-experience [experience]="model().experience" />
+      }
+      @if (model().achievements.length) {
+        <sg-recruiter-achievements [achievements]="model().achievements" />
+      }
+      @if (model().projects.length) {
+        <sg-recruiter-projects [projects]="model().projects" />
+      }
+      @for (section of customSections(); track section.id) {
+        <sg-recruiter-custom [section]="section" />
+      }
+    </div>
+
+    @if (hasSide()) {
+      <aside class="side" [attr.aria-label]="'Qualifications' | t">
+        @if (hasSkills()) {
+          <sg-recruiter-skills [skills]="model().skills" />
+        }
+        @if (model().education.length) {
+          <sg-recruiter-education [education]="model().education" />
+        }
+        @if (model().certifications.length) {
+          <sg-recruiter-list id="certifications" [heading]="'Certifications' | t" [lines]="credentialLines(model().certifications)" />
+        }
+        @if (model().awards.length) {
+          <sg-recruiter-list id="awards" [heading]="'Awards' | t" [lines]="credentialLines(model().awards)" />
+        }
+        @if (languages().length) {
+          <sg-recruiter-list id="languages" [heading]="'Languages' | t" [lines]="languages()" inline />
+        }
+        @if (model().interests.length) {
+          <sg-recruiter-list id="interests" [heading]="'Interests' | t" [lines]="model().interests" inline />
+        }
+      </aside>
+    }
+  </div>
+
+  @if (model().meta.demoNotice) {
+    <p class="note">{{ model().meta.demoNotice }}</p>
+  }
+</div>

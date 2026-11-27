@@ -1,0 +1,6 @@
+// Sigil identity: bases. Generated from the reference stylesheet by tools/split-styles.py.
+.bases { display: flex; flex-direction: column; gap: 10px; }
+.bases li { position: relative; padding-left: 24px; }
+.bases li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 9px; height: 9px; background: var(--accent); }
+.tags { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: 8px; vertical-align: 0.1em; }
+.tag { padding: 1px 6px; border: 1px solid var(--fg); font-family: var(--mono); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; }

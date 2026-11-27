@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "demo": true,
+    "demoNotice": "Demonstration profile. All content is fictional."
+  },
+  "profile": {
+    "name": "Sam Example",
+    "headline": "Full-Stack Engineer and Tech Lead",
+    "archetype": "engineer",
+    "summary": "A fictional engineer whose roles cut across the companies he worked for."
+  },
+  "roles": [
+    {
+      "id": "frontend",
+      "name": "Front-End"
+    },
+    {
+      "id": "backend",
+      "name": "Back-End"
+    },
+    {
+      "id": "lead",
+      "name": "Tech Lead"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Consultant",
+      "company": "Example Services",
+      "start": "2019",
+      "summary": "Fictional services company; the two entries below are client missions delivered through it.",
+      "roles": [
+        "lead"
+      ],
+      "missions": [
+        {
+          "text": "Trained other consultants.",
+          "roles": [
+            "lead"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "Senior Full-Stack Engineer",
+      "company": "Example Media",
+      "start": "2022",
+      "roles": [
+        "frontend",
+        "backend"
+      ],
+      "highlights": [
+        "Shipped a new booking flow end to end.",
+        {
+          "text": "Rebuilt the design system in web components.",
+          "roles": [
+            "frontend"
+          ]
+        },
+        {
+          "text": "Ran weekly architecture reviews.",
+          "roles": [
+            "lead"
+          ]
+        }
+      ],
+      "employer": "Example Services"
+    },
+    {
+      "role": ".NET Developer",
+      "company": "Sample Bank",
+      "start": "2019",
+      "end": "2022",
+      "roles": [
+        "backend"
+      ],
+      "highlights": [
+        "Moved the payments service to a queue-based design.",
+        "Cut nightly batch time from six hours to forty minutes."
+      ],
+      "employer": "Example Services"
+    }
+  ]
+}

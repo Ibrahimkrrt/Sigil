@@ -1,0 +1,119 @@
+{
+  "basics": {
+    "name": "Noor Example",
+    "label": "Data Engineer",
+    "image": "",
+    "email": "noor@example.com",
+    "phone": "+00 000 000 000",
+    "url": "https://example.com",
+    "summary": "Fictional profile in the JSON Resume format.\n\nUsed to check that a standard résumé file loads without any change.",
+    "location": {
+      "city": "Lyon",
+      "countryCode": "FR"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "noor-example",
+        "url": "https://example.com/github"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Example Data Co",
+      "position": "Senior Data Engineer",
+      "startDate": "2021-03-01",
+      "summary": "Owns the ingestion platform.",
+      "highlights": [
+        "Cut pipeline cost by a third.",
+        "Moved 40 jobs to streaming."
+      ]
+    },
+    {
+      "name": "Sample Analytics",
+      "position": "Data Engineer",
+      "startDate": "2017-09-01",
+      "endDate": "2021-02-28",
+      "highlights": [
+        "Built the first warehouse."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Example University",
+      "area": "Computer Science",
+      "studyType": "MSc",
+      "startDate": "2012-09-01",
+      "endDate": "2017-06-30"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": [
+        "Python",
+        "SQL",
+        "Scala"
+      ]
+    },
+    {
+      "name": "Platforms",
+      "keywords": [
+        "Spark",
+        "Kafka",
+        "Airflow"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "French",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Open pipeline kit",
+      "description": "A fictional open-source toolkit.",
+      "keywords": [
+        "Python"
+      ],
+      "url": "https://example.com/kit",
+      "startDate": "2022-01-01"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Example Cloud Architect",
+      "issuer": "Example Cloud",
+      "date": "2023-05-01"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Team award",
+      "awarder": "Example Data Co",
+      "date": "2022-11-01"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Cycling"
+    },
+    {
+      "name": "Typography"
+    }
+  ],
+  "references": [
+    {
+      "name": "A fictional manager",
+      "reference": "Noor makes hard systems boring, which is the highest praise."
+    }
+  ]
+}

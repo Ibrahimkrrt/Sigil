@@ -1,0 +1,42 @@
+<fieldset class="st-group">
+  <legend>{{ 'Profile' | t }}</legend>
+  <sg-studio-field [label]="'Name' | t" path="profile.name" />
+  <sg-studio-field [label]="'Headline' | t" path="profile.headline" />
+  <sg-studio-field [label]="'Tagline' | t" path="profile.tagline" area [rows]="2" [hint]="'The opening statement. **Bold** one phrase for emphasis.' | t" />
+  <sg-studio-field [label]="'Location' | t" path="profile.location" />
+  <sg-studio-field [label]="'Summary' | t" path="profile.summary" area [rows]="6" [hint]="'Leave a blank line between paragraphs.' | t" [codec]="paragraphs" />
+</fieldset>
+<fieldset class="st-group">
+  <legend>{{ 'Contact' | t }}</legend>
+  <sg-studio-field [label]="'Email' | t" path="contact.email" shared />
+  <sg-studio-field [label]="'Phone' | t" path="contact.phone" shared />
+  <sg-studio-field [label]="'Website' | t" path="contact.website" placeholder="https://" shared />
+</fieldset>
+<fieldset class="st-group">
+  <legend>{{ 'Experience' | t }}</legend>
+  <ol class="st-list">
+    @for (heading of entries(); track $index; let i = $index) {
+      <li class="st-item">
+        <details>
+          <summary>{{ heading }}</summary>
+          <sg-studio-field [label]="'Role' | t" [path]="'experience.' + i + '.role'" />
+          <sg-studio-field [label]="'Company' | t" [path]="'experience.' + i + '.company'" />
+          <sg-studio-field [label]="'Location' | t" [path]="'experience.' + i + '.location'" />
+          <div class="st-row">
+            <sg-studio-field [label]="'Start' | t" [path]="'experience.' + i + '.start'" [placeholder]="'YYYY-MM' | t" shared />
+            <sg-studio-field [label]="'End' | t" [path]="'experience.' + i + '.end'" [placeholder]="'empty = today' | t" shared />
+          </div>
+          <sg-studio-field [label]="'Summary' | t" [path]="'experience.' + i + '.summary'" area [hint]="'Use **double asterisks** for bold emphasis.' | t" />
+          <sg-studio-field [label]="'Highlights' | t" [path]="'experience.' + i + '.highlights'" area [rows]="4" [hint]="'One per line. End a line with #role tags (for example #backend) to place it on those roles.' | t" [codec]="missions" />
+          <div class="st-row">
+            <button type="button" class="st-btn" [disabled]="i === 0" (click)="move(i, -1)">{{ 'Move up' | t }}</button>
+            <button type="button" class="st-btn" [disabled]="i === entries().length - 1" (click)="move(i, 1)">{{ 'Move down' | t }}</button>
+            <button type="button" class="st-btn" (click)="remove(i)">{{ 'Remove' | t }}</button>
+          </div>
+        </details>
+      </li>
+    }
+  </ol>
+  <button type="button" class="st-btn" (click)="add()">{{ 'Add a role' | t }}</button>
+</fieldset>
+<p class="st-hint">{{ 'Projects, skills, education and custom sections are edited in the JSON tab.' | t }}</p>

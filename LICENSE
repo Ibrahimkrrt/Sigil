@@ -1,0 +1,26 @@
+Sigil CV
+Copyright (c) 2026 Sigil CV. All rights reserved.
+
+Sigil CV (the engine, the Sigil Studio editor, their source code, styles,
+shaders, visual design and documentation, together "the Software") was created
+by Ibrahim El Karrat and is proprietary.
+
+No licence is granted. Without prior written permission from the copyright
+holder you may not copy, modify, merge, publish, distribute, sublicense, sell
+or host the Software or any substantial part of it, or use it to produce a CV
+or site for yourself or for anyone else.
+
+Viewing a CV published with Sigil CV in a web browser is permitted. That
+permission does not extend to reusing its code or design.
+
+The content of a CV (text, images, personal data) belongs to the person it
+describes and is not covered by this notice.
+
+Third-party material keeps its own licence: the Bricolage Grotesque and
+JetBrains Mono typefaces are loaded from Google Fonts under the SIL Open Font
+License; esbuild, axe-core and Playwright are development tools and are not
+part of the published pages.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+Permission requests: contact the author.

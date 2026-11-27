@@ -1,0 +1,19 @@
+{
+  "meta": { "lang": "en", "demo": true, "demoNotice": "Demonstration profile. All content is fictional." },
+  "profile": {
+    "name": "Jonas Abara",
+    "headline": "Independent Strategy Consultant",
+    "tagline": "I help operations leaders turn a messy supply chain into **a plan the board can fund**.",
+    "location": "Rotterdam, Netherlands",
+    "summary": "Twelve years advising logistics and retail companies on network design, pricing and transformation."
+  },
+  "contact": { "email": "jonas@example.com" },
+  "experience": [
+    { "role": "Network redesign", "company": "Regional grocery retailer", "start": "2023-02", "end": "2024-06", "clients": ["Retail"], "summary": "Consolidated five warehouses into three.", "stats": [{ "value": "18%", "label": "lower logistics cost" }] },
+    { "role": "Pricing strategy", "company": "Parcel carrier", "start": "2021-05", "end": "2022-12", "clients": ["Logistics"], "summary": "Rebuilt the B2B rate card.", "stats": [{ "value": "+6", "label": "margin points" }] }
+  ],
+  "achievements": [{ "value": "31", "label": "missions delivered" }, { "value": "12", "label": "years advising" }],
+  "skills": { "technical": ["Network modelling", "Pricing", "Change management"], "languages": [{ "name": "Dutch", "level": "Native" }, { "name": "English", "level": "Fluent" }] },
+  "sections": ["hero", "achievements", "experience", "summary", { "type": "custom", "id": "approach", "title": "The *approach*", "blocks": [{ "type": "text", "text": "Diagnose in two weeks. Decide in six. Deliver with the client's own team." }, { "type": "mystery-widget", "title": "An unknown block type", "text": "Unknown block types fall back to their text." }, { "type": "video" }] }, "skills", "contact"],
+  "theme": { "mode": "dark", "lead": "horizon", "motion": 0.4, "density": "compact" }
+}

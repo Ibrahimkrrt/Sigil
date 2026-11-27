@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "demo": true,
+    "demoNotice": "Demonstration profile. All content is fictional."
+  },
+  "profile": {
+    "name": "Robin Example",
+    "headline": "Full-Stack Engineer and Tech Lead",
+    "archetype": "engineer",
+    "summary": "A fictional engineer whose roles cut across the companies he worked for."
+  },
+  "roles": [
+    {
+      "id": "fullstack",
+      "name": "Full-Stack Engineer",
+      "summary": "Front-end and back-end work, counted as one position.",
+      "parts": [
+        {
+          "id": "frontend",
+          "name": "Front-End"
+        },
+        {
+          "id": "backend",
+          "name": "Back-End"
+        }
+      ]
+    },
+    {
+      "id": "lead",
+      "name": "Tech Lead"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Full-Stack Engineer",
+      "company": "Example Media",
+      "start": "2022",
+      "roles": [
+        "frontend",
+        "backend"
+      ],
+      "highlights": [
+        "Shipped a new booking flow end to end.",
+        {
+          "text": "Rebuilt the design system in web components.",
+          "roles": [
+            "frontend"
+          ]
+        },
+        {
+          "text": "Ran weekly architecture reviews.",
+          "roles": [
+            "lead"
+          ]
+        }
+      ]
+    },
+    {
+      "role": ".NET Developer",
+      "company": "Sample Bank",
+      "start": "2019",
+      "end": "2022",
+      "roles": [
+        "backend"
+      ],
+      "highlights": [
+        "Moved the payments service to a queue-based design.",
+        "Cut nightly batch time from six hours to forty minutes."
+      ]
+    }
+  ]
+}

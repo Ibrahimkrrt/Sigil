@@ -1,0 +1,10 @@
+// Sigil identity: stat. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Impact ---------- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); border-top: 1px solid var(--fg); border-left: 1px solid var(--fg); }
+.stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 12px; min-height: clamp(180px, 22cqi, 280px); padding: 20px; border-right: 1px solid var(--fg); border-bottom: 1px solid var(--fg); transition: background-color 0.2s, color 0.2s; }
+.stat:hover { background: var(--fg); color: var(--ground); }
+.stat__value { font-size: clamp(3.6rem, 9cqi, 8rem); color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat:hover .stat__value, .stat:hover .stat__label, .stat:hover .stat__label strong { color: inherit; }
+.stat__label { max-width: 26ch; color: var(--fg-soft); }
+.stat__label strong { color: var(--fg); }
+.stat__detail { display: block; margin-top: 4px; text-transform: none; }

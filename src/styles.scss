@@ -1,0 +1,25 @@
+/* Sigil identity. The stylesheet lives in src/styles, one partial per block.
+   The identity is a two-colour print: every chapter is one ground and one ink. */
+@use 'styles/index';
+
+html, body { margin: 0; }
+body { background: #0b0b0d; }
+
+/* Component hosts that only group their content take no box of their own. */
+.sg-contents { display: contents; }
+
+/* Links in the recruiter document, wherever in it they are rendered. */
+[data-view="recruiter"] a { color: #1f2bd6; text-decoration: underline; }
+@media print {
+  @page { margin: 16mm; }
+  .scv { background: #ffffff !important; color: #0b0b0d !important; min-height: 0 !important; }
+  .scv .nav, .scv .skip, .scv [data-view="immersive"], .scv .intro, .scv .cursor { display: none !important; }
+  .scv sg-recruiter-document, .scv sg-recruiter-document[hidden] { display: block !important; }
+  [data-view="recruiter"] a { color: #0b0b0d; text-decoration: none; }
+}
+
+/* Custom elements are inline by default; these two are boxes. */
+sg-cv-picture, sg-viewer-page, sg-immersive-story, sg-hero-chapter, sg-contact-chapter, sg-marquee-strip { display: block; }
+
+/* The download menu opens leftwards from the right-hand side of the recruiter header. */
+[data-view="recruiter"] .menu { left: auto; right: 0; }

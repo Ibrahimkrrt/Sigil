@@ -1,0 +1,18 @@
+// Sigil identity: pile. Generated from the reference stylesheet by tools/split-styles.py.
+.pile { position: relative; height: max(clamp(340px, calc(var(--vh) * 0.62), 600px), var(--pile-h, 0px)); overflow: hidden; border: 1px solid var(--fg); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 40px 40px; background-position: -1px -1px; touch-action: pan-y; }
+.pile__list { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; }
+.brick { display: inline-flex; align-items: baseline; gap: 8px; padding: 12px 16px; border: 1px solid var(--fg); background: var(--ground); color: var(--fg); font-size: 0.9375rem; font-weight: 700; white-space: nowrap; }
+.brick--g0 { background: var(--accent); color: var(--on-accent); }
+.brick--g1 { background: var(--fg); color: var(--ground); }
+.brick--soft { border-style: dashed; font-weight: 500; }
+.brick__lvl { font-size: 0.6875rem; font-weight: 500; }
+.pile.is-live .pile__list { display: block; padding: 0; }
+.pile.is-live .brick { max-width: 100%; white-space: normal; position: absolute; left: 0; top: 0; cursor: grab; user-select: none; -webkit-user-select: none; touch-action: none; will-change: transform; }
+.pile.is-live .brick.is-held { cursor: grabbing; z-index: 2; box-shadow: 6px 6px 0 var(--fg); }
+@container scv (max-width: 600px) {
+  .pile .brick { padding: 7px 9px; font-size: 0.6875rem; }
+  .pile .brick__lvl { display: none; }
+}
+.pile__note { position: absolute; left: 50%; top: 14px; z-index: 3; translate: -50% 0; max-width: calc(100% - 24px); padding: 8px 12px; background: var(--fg); color: var(--ground); font-family: var(--mono); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; text-align: center; pointer-events: none; }
+.is-animated .pile__note { animation: sigil-up 0.3s var(--snap) both; }
+.scv.has-cursor .pile__note { display: none; }

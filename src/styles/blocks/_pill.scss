@@ -1,0 +1,12 @@
+// Sigil identity: pill. Generated from the reference stylesheet by tools/split-styles.py.
+.iconbtn { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex: none; border: 1px solid var(--fg); background: var(--ground); color: var(--fg); }
+.iconbtn:hover { background: var(--fg); color: var(--ground); }
+/* ---------- Shared components ---------- */
+.pill { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 0 22px; border: 1px solid var(--fg); background: var(--accent); color: var(--on-accent) !important; font-weight: 700; text-decoration: none; white-space: nowrap; box-shadow: 5px 5px 0 var(--fg); transition: box-shadow 0.18s var(--snap), translate 0.18s var(--snap); }
+.pill:hover { box-shadow: 0 0 0 var(--fg); translate: 5px 5px; }
+.textbtn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; background: none; color: var(--fg); font-weight: 700; text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 2px; text-decoration-color: var(--accent); }
+.textbtn:hover { text-decoration-color: var(--fg); }
+.ico { flex: none; }
+.links { display: flex; flex-direction: column; max-width: 760px; border-top: 1px solid var(--fg); }
+.link-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 6px; border-bottom: 1px solid var(--line); font-size: 1.125rem; font-weight: 700; text-decoration: none; transition: background-color 0.15s, color 0.15s, padding 0.3s var(--snap); }
+.link-row:hover { background: var(--fg); color: var(--ground); padding-inline: 16px; }

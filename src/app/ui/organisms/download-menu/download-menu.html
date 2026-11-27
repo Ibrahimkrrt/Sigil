@@ -1,0 +1,35 @@
+<button #button type="button" [class]="buttonClass()" [attr.aria-controls]="id" aria-haspopup="true" [attr.aria-expanded]="open()" (click)="toggle()">
+  <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2 14h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+  {{ 'Download CV' | t }}
+</button>
+<ul class="menu" [id]="id" [hidden]="!open()">
+  @for (format of formats; track format.id) {
+    <li>
+      <button type="button" class="menu__item" (click)="choose(format)">
+        <span class="menu__label">{{ format.label | t }}</span>
+        <span class="menu__hint">{{ format.hint | t }}</span>
+      </button>
+    </li>
+  }
+  <li>
+    <button type="button" class="menu__item" (click)="print()">
+      <span class="menu__label">{{ 'Print' | t }}</span>
+      <span class="menu__hint">{{ 'Opens the print dialog with the recruiter layout' | t }}</span>
+    </button>
+  </li>
+</ul>
+<dialog #ask class="ask" [attr.aria-labelledby]="id + '-ask'" (click)="closeOnBackdrop($event)">
+  <div class="ask__in">
+    <h2 class="ask__title" [id]="id + '-ask'">{{ 'Add the accessible version?' | t }}</h2>
+    <p class="ask__text">{{ 'The print-ready PDF is designed for the eye. The accessible version has larger type, plain structure and bookmarks, and reads well with a screen reader. Both can travel in one file: the designed pages first, the accessible pages after.' | t }}</p>
+    <button type="button" class="ask__btn ask__btn--primary" (click)="answer(true)">
+      <span class="menu__label">{{ 'Both in one PDF' | t }}</span>
+      <span class="menu__hint">{{ 'Print-ready pages, then the accessible pages' | t }}</span>
+    </button>
+    <button type="button" class="ask__btn" (click)="answer(false)">
+      <span class="menu__label">{{ 'Print-ready only' | t }}</span>
+      <span class="menu__hint">{{ 'The designed pages alone' | t }}</span>
+    </button>
+    <button type="button" class="ask__cancel" (click)="cancel()">{{ 'Cancel' | t }}</button>
+  </div>
+</dialog>

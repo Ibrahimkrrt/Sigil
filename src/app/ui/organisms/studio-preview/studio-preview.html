@@ -1,0 +1,20 @@
+<div class="st-toolbar">
+  <div class="st-seg" role="group" [attr.aria-label]="'Preview size' | t">
+    @for (option of devices(); track option.value) {
+      <button type="button" class="st-seg__btn" [attr.aria-pressed]="store.device() === option.value" (click)="store.device.set(option.value)">{{ option.label }}</button>
+    }
+  </div>
+  <div class="st-seg" role="group" [attr.aria-label]="'Preview mode' | t">
+    @for (option of modes(); track option.value) {
+      <button type="button" class="st-seg__btn" [attr.aria-pressed]="store.mode() === option.value" (click)="show(option.value)">{{ option.label }}</button>
+    }
+  </div>
+  <span class="st-note">{{ '{w} px wide, shown at {pct}%' | t: { w: frame().width, pct: frame().percent } }}</span>
+</div>
+<div class="st-viewport" #viewport>
+  <div class="st-framebox" [style.width.px]="frame().width * frame().scale" [style.height.px]="frame().height * frame().scale">
+    <div class="st-frame" [style.width.px]="frame().width" [style.height.px]="frame().height" [style.transform]="'scale(' + frame().scale + ')'">
+      <iframe src="preview" [title]="'CV preview, scrollable' | t"></iframe>
+    </div>
+  </div>
+</div>

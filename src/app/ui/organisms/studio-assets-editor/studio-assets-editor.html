@@ -1,0 +1,30 @@
+<div class="st-field">
+  <label for="st-upload">{{ 'Upload images or video' | t }}</label>
+  <input #files type="file" id="st-upload" class="st-input" multiple accept="image/*,video/mp4,video/webm" (change)="upload(files)" />
+  <p class="st-hint">{{ 'Files stay in this browser. Reference them in the JSON by path, for example "assets/portrait.jpg".' | t }}</p>
+</div>
+@if (entries().length) {
+  <ul class="st-assets">
+    @for (asset of entries(); track asset.path) {
+      <li class="st-asset">
+        @if (asset.image) {
+          <img class="st-thumb" [src]="asset.url" alt="" />
+        } @else {
+          <span class="st-thumb" aria-hidden="true"></span>
+        }
+        <div class="st-asset__meta"><code>{{ asset.path }}</code><span class="st-note">{{ asset.size }}</span></div>
+        <div class="st-row">
+          @if (asset.image) {
+            <button type="button" class="st-btn" (click)="usePortrait(asset.path)">{{ 'Use as portrait' | t }}</button>
+          }
+          <button type="button" class="st-btn" [attr.aria-label]="'Remove {name}' | t: { name: asset.path }" (click)="remove(asset.path)">{{ 'Remove' | t }}</button>
+        </div>
+      </li>
+    }
+  </ul>
+} @else {
+  <p class="st-hint">{{ 'No assets yet. Without images the engine draws generated patterns in the chapter ink.' | t }}</p>
+}
+@if (hasPortrait()) {
+  <button type="button" class="st-btn" (click)="store.setShared('profile.photo', null)">{{ 'Remove portrait' | t }}</button>
+}

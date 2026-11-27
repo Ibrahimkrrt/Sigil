@@ -1,0 +1,36 @@
+<sg-pattern-tile class="hero__bg" seed="opening" [pattern]="backdrop()" quiet />
+<p class="hero__top">
+  <span>{{ model().profile.tagline ? model().profile.headline : ('Portfolio' | t) }}</span>
+  @for (item of meta(); track $index) {
+    <span>{{ item }}</span>
+  }
+  <span class="hero__sig" aria-hidden="true"><svg sgSigilMark [seed]="model().theme.seed"></svg>SIG {{ model().theme.code }}</span>
+</p>
+@if (model().profile.photo; as photo) {
+  <sg-cv-picture class="hero__art" [image]="photo" [seed]="model().profile.name" eager />
+} @else {
+  <div class="pic pic--gen hero__art" data-hover><sg-pattern-tile [seed]="model().profile.name + '/art'" /></div>
+}
+<h1 class="hero__name" [id]="chapter().id + '-title'" tabindex="-1" [attr.aria-label]="model().profile.name" [sgFitText]="0.25" data-proximity>
+  <span class="hero__line" aria-hidden="true" data-fit-line><sg-split-chars [text]="model().profile.given" /></span>
+  @if (model().profile.family) {
+    <span class="hero__line hero__line--ink" aria-hidden="true" data-fit-line><sg-split-chars [text]="model().profile.family" [start]="model().profile.given.length" /></span>
+  }
+</h1>
+<div class="hero__foot">
+  <p class="hero__tag"><sg-rich-text [text]="model().profile.tagline || model().profile.headline" /></p>
+  <div class="hero__row">
+    @if (nextId(); as next) {
+      <a class="pill" [href]="'#' + next" data-magnetic data-scramble>
+        <span data-scramble-text>{{ 'Begin the story' | t }}</span>
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 2v12M3 9l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" /></svg>
+      </a>
+    }
+    @if (model().meta.demoNotice) {
+      <span class="chip chip--line">{{ model().meta.demoNotice }}</span>
+    }
+  </div>
+</div>
+@if (model().theme.effects.marquee && strip().length) {
+  <sg-marquee-strip class="hero__marquee" [items]="strip()" />
+}

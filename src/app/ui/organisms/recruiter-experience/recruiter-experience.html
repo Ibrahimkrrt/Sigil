@@ -1,0 +1,21 @@
+<sg-recruiter-section id="experience" [heading]="'Experience' | t">
+  @for (entry of experience(); track entry.id) {
+    <sg-recruiter-item
+      [heading]="heading(entry)"
+      [when]="entry.start | dateRange: (entry.current ? '' : entry.end) : true : ('Present' | t)"
+      [meta]="meta(entry)"
+      [nested]="entry.sub"
+    >
+      @if (entry.summary) {
+        <p>{{ entry.summary | plain }}</p>
+      }
+      @if (entry.highlights.length) {
+        <ul>
+          @for (line of entry.highlights; track $index) {
+            <li>{{ line | plain }}</li>
+          }
+        </ul>
+      }
+    </sg-recruiter-item>
+  }
+</sg-recruiter-section>

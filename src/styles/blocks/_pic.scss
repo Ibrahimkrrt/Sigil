@@ -1,0 +1,17 @@
+// Sigil identity: pic. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Dithered tiles ---------- */
+.dither { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+.dither--css { background: repeating-linear-gradient(45deg, var(--accent) 0 2px, transparent 2px 8px), var(--ground); }
+.dither--css.dither--rings { background: repeating-radial-gradient(circle at 30% 40%, var(--accent) 0 2px, transparent 2px 12px), var(--ground); }
+.dither--css.dither--bars { background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 14px), var(--ground); }
+.dither--css.dither--waves, .dither--css.dither--contours { background: repeating-linear-gradient(-30deg, var(--accent) 0 1px, transparent 1px 6px), var(--ground); }
+.dither--css.hero__bg { background: repeating-linear-gradient(45deg, var(--tone) 0 3px, transparent 3px 9px), var(--ground); }
+.pic { position: relative; overflow: hidden; background: var(--panel); aspect-ratio: 4 / 3; border: 1px solid var(--fg); }
+.pic img { width: 100%; height: 100%; object-fit: cover; }
+.pic .dither { position: absolute; inset: 0; }
+.pic--dithered .dither { clip-path: inset(0 0 0 0); transition: clip-path 0.45s steps(9, end); }
+.pic--dithered:hover .dither, .pic--dithered:focus-within .dither { clip-path: inset(0 0 100% 0); }
+.mono { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; flex: none; background: var(--accent); color: var(--on-accent); font-family: var(--mono); font-size: 0.8125rem; font-weight: 700; }
+@container scv (max-width: 600px) {
+  .mono { width: 32px; }
+}

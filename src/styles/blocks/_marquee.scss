@@ -1,0 +1,6 @@
+// Sigil identity: marquee. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Marquee strips ---------- */
+.marquee { overflow: hidden; background: var(--accent); color: var(--on-accent); border-block: 1px solid var(--fg); white-space: nowrap; }
+.marquee__track { display: inline-flex; will-change: transform; }
+.marquee__item { display: inline-flex; align-items: center; gap: 22px; padding: 12px 0 12px 22px; font-size: 0.9375rem; font-weight: 700; }
+.marquee__sep { width: 10px; height: 10px; background: currentColor; transform: rotate(45deg); }

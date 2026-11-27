@@ -1,0 +1,23 @@
+<header sgChapterHeader [chapter]="chapter()" [index]="index()"></header>
+@if (!chapter().intro && model().profile.location) {
+  <p class="ch__intro">{{ 'Based in {location}.' | t: { location: model().profile.location } }}</p>
+}
+@if (model().contact.email; as email) {
+  <div class="contact__email">
+    <a class="contact__big" #address [href]="'mailto:' + email" [attr.aria-label]="email" [sgFitText]="0.22" data-proximity [attr.data-cursor]="'Write' | t">
+      <span aria-hidden="true"><sg-split-chars [text]="email" /></span>
+    </a>
+    <button type="button" class="textbtn" data-scramble (click)="copy()"><span data-scramble-text>{{ (copied() ? 'Copied' : 'Copy address') | t }}</span></button>
+  </div>
+}
+@if (model().contact.phone; as phone) {
+  <p class="contact__line"><a [href]="'tel:' + dialable()">{{ phone }}</a></p>
+}
+@if (links().length) {
+  <ul class="contact__links">
+    @for (link of links(); track link.url) {
+      <li><a class="link-row" sgExternalLink [url]="link.url" data-scramble><span data-scramble-text>{{ link.label }}</span><svg sgArrowIcon></svg></a></li>
+    }
+  </ul>
+}
+<div class="contact__cta"><ng-content /></div>

@@ -1,0 +1,34 @@
+// Sigil identity: hero. Generated from the reference stylesheet by tools/split-styles.py.
+.hero__sig, .foot__sig, .intro__mark { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; }
+.hero__sig .sigil, .foot__sig .sigil { width: 20px; height: 20px; }
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto auto auto; grid-template-areas: "top" "art" "name" "foot" "strip"; min-height: calc(var(--vh) - var(--nav-h)); }
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero > :not(.hero__bg) { position: relative; z-index: 1; }
+.hero > :not(.hero__bg, .hero__marquee) { margin-left: var(--gut); margin-right: var(--gut-r); }
+.hero__top { grid-area: top; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 28px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.hero__art { grid-area: art; justify-self: end; height: clamp(120px, 26cqi, 220px); width: auto; aspect-ratio: 4 / 5; margin-block: 18px; }
+.hero__name { grid-area: name; }
+.hero__foot { grid-area: foot; }
+.hero__marquee { grid-area: strip; }
+@container scv (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto minmax(24px, 1fr) auto auto auto; grid-template-areas: "top top" ". art" "name art" "foot foot" "strip strip"; }
+  .hero > .hero__art { align-self: stretch; height: auto; min-height: 240px; width: min(27cqi, calc(var(--vh) * 0.46)); aspect-ratio: auto; margin: 18px var(--gut-r) 0 0; }
+  .hero > .hero__name { margin-right: clamp(16px, 3cqi, 40px); }
+}
+.hero__name { font-size: var(--fit, 17cqi); line-height: 0.8; }
+.hero__line { display: block; white-space: nowrap; overflow-y: clip; padding-block: 0.04em 0.1em; margin-bottom: -0.1em; }
+.hero__line--ink { color: var(--ink); }
+.char { display: inline-block; }
+[data-proximity] .char { font-weight: calc(800 - var(--near, 0) * 520); font-stretch: calc(75% + var(--near, 0) * 25%); }
+.hero__foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 48px; padding-block: clamp(18px, 3cqi, 34px); }
+.hero__tag { flex: 1 1 320px; max-width: 34ch; font-size: clamp(1.2rem, 2.3cqi, 1.9rem); font-weight: 500; line-height: 1.18; text-wrap: pretty; }
+.hero__row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; padding-right: 6px; padding-bottom: 6px; }
+.hero__marquee { border-bottom: 0; }
+.is-entering:not(.is-ready) .hero .char, .is-entering:not(.is-ready) .hero__foot, .is-entering:not(.is-ready) .hero__art, .is-entering:not(.is-ready) .hero__top { opacity: 0; }
+.is-entering.is-ready .hero .char { animation: sigil-rise 0.8s var(--snap) both; animation-delay: calc(var(--i) * 34ms + 80ms); }
+.is-entering.is-ready .hero__foot, .is-entering.is-ready .hero__top { animation: sigil-up 0.7s var(--snap) both; animation-delay: 0.55s; }
+.is-entering.is-ready .hero__art { animation: sigil-wipe 0.9s steps(12, end) both; animation-delay: 0.3s; }
+.hero--center .hero__name, .hero--center .hero__tag { text-align: center; }
+.hero--center .hero__foot { flex-direction: column; align-items: center; }
+.hero--center .hero__tag { flex: none; }
+.hero--center .hero__art { justify-self: center; }

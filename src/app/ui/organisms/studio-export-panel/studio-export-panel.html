@@ -1,0 +1,39 @@
+<ul class="st-exports">
+  @for (item of exports; track item[0]) {
+    <li class="st-export">
+      <div><strong>{{ item[1] | t }}</strong><p class="st-hint">{{ item[2] | t }}</p></div>
+      <button type="button" class="st-btn" [attr.aria-label]="'Export {label}' | t: { label: (item[1] | t) }" (click)="save(item[0], item[1])">{{ 'Export' | t }}</button>
+    </li>
+  }
+</ul>
+<p class="st-hint" role="status">{{ status() }}</p>
+<fieldset class="st-group">
+  <legend>{{ 'Print-ready PDF design' | t }}</legend>
+  <div class="st-field">
+    <label for="st-pdf-ground">{{ 'Page' | t }}</label>
+    <select id="st-pdf-ground" class="st-input" (change)="store.setShared('theme.pdf.ground', $any($event.target).value)">
+      <option value="paper" [selected]="pdfTheme().ground === 'paper'">{{ 'White paper, ink header' | t }}</option>
+      <option value="ink" [selected]="pdfTheme().ground === 'ink'">{{ 'Ink throughout (dark)' | t }}</option>
+    </select>
+  </div>
+  <div class="st-field">
+    <label for="st-pdf-photo">{{ 'Portrait' | t }}</label>
+    <select id="st-pdf-photo" class="st-input" (change)="store.setShared('theme.pdf.photo', $any($event.target).value)">
+      <option value="photo" [selected]="pdfTheme().photo === 'photo'">{{ 'Photo as it is' | t }}</option>
+      <option value="dither" [selected]="pdfTheme().photo === 'dither'">{{ 'Dithered in the two colours' | t }}</option>
+      <option value="none" [selected]="pdfTheme().photo === 'none'">{{ 'No portrait (signature mark instead)' | t }}</option>
+    </select>
+  </div>
+  <p class="st-hint">{{ 'The portrait is the profile photo (Content, then Assets). The colour is the lead ink from the Theme tab.' | t }}</p>
+  <div class="st-check">
+    <input type="checkbox" id="st-append" [checked]="store.appendAccessible()" (change)="store.appendAccessible.set($any($event.target).checked)" />
+    <label for="st-append">{{ 'Append the accessible version in the same file' | t }}</label>
+  </div>
+</fieldset>
+<div class="st-field">
+  <label for="st-paper">{{ 'Page size' | t }}</label>
+  <select id="st-paper" class="st-input" (change)="store.paper.set($any($event.target).value)">
+    <option value="a4" [selected]="store.paper() === 'a4'">A4</option>
+    <option value="letter" [selected]="store.paper() === 'letter'">{{ 'US Letter' | t }}</option>
+  </select>
+</div>

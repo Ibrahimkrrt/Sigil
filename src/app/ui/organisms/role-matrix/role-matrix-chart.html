@@ -1,0 +1,38 @@
+<figcaption class="matrix__cap">{{ 'Role by year' | t }}</figcaption>
+<div class="matrix__scroll" tabindex="0" role="group" [attr.aria-label]="'Role by year' | t">
+  <div class="matrix__grid" role="img" [attr.aria-label]="matrix().description" [style.--years]="matrix().years.length">
+    <div class="matrix__years" aria-hidden="true">
+      <span></span>
+      <div class="matrix__axis">
+        @for (year of matrix().years; track year) {
+          <span>’{{ year.toString().slice(2) }}</span>
+        }
+      </div>
+    </div>
+    @if (matrix().employers.length) {
+      <div class="matrix__row matrix__row--emp" aria-hidden="true">
+        <span class="matrix__name">{{ 'Employer' | t }}</span>
+        <div class="matrix__lane">
+          @for (bar of matrix().employers; track bar.name) {
+            <span class="matrix__bar matrix__bar--emp" [title]="bar.title" [style.left]="bar.left" [style.width]="bar.width"><span>{{ bar.name }}</span></span>
+          }
+        </div>
+      </div>
+    }
+    @for (row of matrix().rows; track $index) {
+      <div class="matrix__row" [class.matrix__row--part]="row.part" aria-hidden="true">
+        <span class="matrix__name">{{ row.name }}</span>
+        <div class="matrix__lane" [class.matrix__lane--part]="row.part" [style.--rows]="row.depth">
+          @for (bar of row.bars; track $index) {
+            <span class="matrix__bar" [class]="'matrix__bar--' + bar.fill" [title]="bar.title" [style.left]="bar.left" [style.width]="bar.width" [style.--row]="bar.row" [style.--w]="bar.weight"><span>{{ bar.name }}</span></span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
+<ul class="matrix__legend" aria-hidden="true">
+  @for (company of matrix().companies; track company) {
+    <li><i class="matrix__bar" [class]="'matrix__bar--' + ($index % 6)"></i>{{ company }}</li>
+  }
+</ul>

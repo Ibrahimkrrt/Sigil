@@ -1,0 +1,4 @@
+// Sigil identity: badge. Generated from the reference stylesheet by tools/split-styles.py.
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.scv .badge { display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; background: var(--accent); color: var(--on-accent); font-weight: 700; text-decoration: none; }
+.scv a.badge:hover { background: var(--fg); color: var(--ground); }

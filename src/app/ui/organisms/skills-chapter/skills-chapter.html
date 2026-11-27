@@ -1,0 +1,78 @@
+<header sgChapterHeader [chapter]="chapter()" [index]="index()">
+  @if (live()) {
+    <div class="viewbar">
+      <div class="seg" role="group" [attr.aria-label]="'View' | t">
+        <button type="button" class="seg__btn" [attr.aria-pressed]="view() === 'pile'" (click)="view.set('pile')">{{ 'Pile' | t }}</button>
+        <button type="button" class="seg__btn" [attr.aria-pressed]="view() === 'list'" (click)="view.set('list')">{{ 'List' | t }}</button>
+      </div>
+      <button type="button" class="textbtn" data-scramble [hidden]="view() !== 'pile'" (click)="effects.dropPile()"><span data-scramble-text>{{ 'Drop them again' | t }}</span></button>
+    </div>
+  }
+</header>
+<div class="pile" [attr.data-cursor]="'Drag' | t" [attr.data-live]="live() ? '' : null" [hidden]="!live() || view() !== 'pile'">
+  <ul class="pile__list" [attr.aria-label]="'Skills' | t">
+    @for (skill of model().skills.technical; track skill.name) {
+      <li class="brick" [class]="'brick--g' + brickStyle(skill.group)">
+        {{ skill.name }}
+        @if (skill.level !== null) {
+          <span class="brick__lvl">{{ skill.level.toFixed(0) }}<span class="sr-only">{{ ' out of 100' | t }}</span></span>
+        }
+      </li>
+    }
+    @for (skill of model().skills.soft; track skill) {
+      <li class="brick brick--soft">{{ skill }}</li>
+    }
+  </ul>
+</div>
+<div class="skilllist" [hidden]="live() && view() !== 'list'">
+  @for (cluster of clusters(); track cluster.name) {
+    <div class="skillgroup" [sgReveal]="$index">
+      @if (cluster.name) {
+        <h3 class="sub">{{ cluster.name }}</h3>
+      }
+      @if (rated()) {
+        <ul class="meters">
+          @for (skill of cluster.skills; track skill.name) {
+            <li class="meter">
+              <span class="meter__name">{{ skill.name }}</span>
+              @if (skill.level !== null) {
+                <span class="meter__val">{{ skill.level.toFixed(0) }}<span class="sr-only">{{ ' out of 100' | t }}</span></span>
+                <span class="meter__bar" aria-hidden="true"><span class="meter__fill" [style.--v]="skill.level / 100"></span></span>
+              }
+            </li>
+          }
+        </ul>
+      } @else {
+        <ul sgChipList [items]="cluster.names" variant="chips--lg"></ul>
+      }
+    </div>
+  }
+  @if (model().skills.soft.length) {
+    <div class="skillgroup" sgReveal>
+      <h3 class="sub">{{ (model().archetype === 'manager' ? 'Leadership' : 'Ways of working') | t }}</h3>
+      <ul sgChipList [items]="model().skills.soft" variant="chips--lg"></ul>
+    </div>
+  }
+</div>
+@if (model().skills.languages.length) {
+  <div class="langs-wrap" sgReveal>
+    <h3 class="sub">{{ 'Languages' | t }}</h3>
+    <ul class="langs">
+      @for (language of model().skills.languages; track language.name) {
+        <li class="lang">
+          <span class="lang__name">{{ language.name }}</span>
+          @if (language.level) {
+            <span class="lang__level">{{ language.level }}</span>
+          }
+          @if (dots(language); as filled) {
+            <span class="lang__dots" aria-hidden="true">
+              @for (dot of [0, 1, 2, 3, 4]; track dot) {
+                <span [class.is-on]="dot < filled"></span>
+              }
+            </span>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+}

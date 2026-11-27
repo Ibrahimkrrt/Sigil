@@ -1,0 +1,39 @@
+<div class="case__in">
+  <button type="button" class="iconbtn case__close" [attr.aria-label]="'Close case study' | t" (click)="close()">
+    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" /></svg>
+  </button>
+  <h3 class="case__title" [id]="'case-' + project().id + '-title'">{{ project().title }}</h3>
+  <p class="meta">{{ meta() }}</p>
+  @if (project().summary) {
+    <p class="prose prose--lead"><sg-rich-text [text]="project().summary" /></p>
+  }
+  @if (project().outcome) {
+    <p class="prose"><strong>{{ 'Outcome. ' | t }}</strong><sg-rich-text [text]="project().outcome" /></p>
+  }
+  @if (tiles().length) {
+    <dl sgTileList [tiles]="tiles()"></dl>
+  }
+  @if (project().process.length) {
+    <ol class="steps">
+      @for (step of project().process; track $index) {
+        <li>
+          <span class="num" aria-hidden="true">{{ ($index + 1).toString().padStart(2, '0') }}</span>
+          <span><strong>{{ step.title }}</strong>{{ step.title && step.text ? '. ' : '' }}{{ step.text }}</span>
+        </li>
+      }
+    </ol>
+  }
+  @if (media().length) {
+    <div class="gallery">
+      @for (image of media(); track $index) {
+        <sg-cv-picture [image]="image" [seed]="project().id + $index" />
+      }
+    </div>
+  }
+  @if (project().tags.length) {
+    <ul sgChipList [items]="project().tags" variant="chips--mono"></ul>
+  }
+  @if (project().link; as link) {
+    <a class="pill" sgExternalLink [url]="link.url">{{ link.label }}<svg sgArrowIcon></svg></a>
+  }
+</div>

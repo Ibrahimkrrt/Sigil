@@ -1,0 +1,5 @@
+// Sigil identity: chip. Generated from the reference stylesheet by tools/split-styles.py.
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; padding: 5px 10px; border: 1px solid var(--fg); font-weight: 500; }
+.chip--line { border-style: dashed; }
+.chips--lg .chip { padding: 10px 16px; font-size: 0.9375rem; }

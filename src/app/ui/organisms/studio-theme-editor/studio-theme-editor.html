@@ -1,0 +1,90 @@
+<fieldset class="st-group">
+  <legend>{{ 'Ground' | t }}</legend>
+  <div class="st-radios">
+    @for (mode of modes; track mode[0]) {
+      <div class="st-radio">
+        <input type="radio" name="st-mode" [id]="'st-mode-' + mode[0]" [value]="mode[0]" [checked]="theme().mode === mode[0]" (change)="set('mode', mode[0])" />
+        <label [for]="'st-mode-' + mode[0]">{{ mode[1] | t }}</label>
+      </div>
+    }
+  </div>
+</fieldset>
+<fieldset class="st-group">
+  <legend>{{ 'Lead ink' | t }}</legend>
+  <div class="st-radios">
+    @for (ink of inkNames; track ink) {
+      <div class="st-swatch">
+        <input type="radio" name="st-lead" class="sr-only" [id]="'st-lead-' + ink" [value]="ink" [checked]="theme().lead === ink" (change)="lead(ink)" />
+        <label [for]="'st-lead-' + ink"><span class="st-swatch__dot" aria-hidden="true" [style.background]="theme().inks[ink].base"></span>{{ inkLabels[ink] | t }}</label>
+      </div>
+    }
+  </div>
+</fieldset>
+<fieldset class="st-group">
+  <legend>{{ 'Signature' | t }}</legend>
+  <div class="st-row st-row--center">
+    <svg class="st-sigil" viewBox="-1 -1 9 9" aria-hidden="true" shape-rendering="crispEdges" [style.background]="theme().inks[theme().lead].base" [style.fill]="theme().inks[theme().lead].onAccent"><path [attr.d]="sigilPath()" /></svg>
+    <div class="st-grow">
+      <p class="st-code-line">SIG {{ theme().code }}</p>
+      <p class="st-hint">{{ 'A mark, patterns and an ink order generated for this person. Nobody else gets the same. A lead ink chosen above overrides the generated one.' | t }}</p>
+    </div>
+  </div>
+  <div class="st-field">
+    <label for="st-seed">{{ 'Seed' | t }}</label>
+    <input type="text" id="st-seed" class="st-input" autocomplete="off" spellcheck="false" [value]="theme().seedIsDefault ? '' : theme().seed" [placeholder]="'From the name (default)' | t" (change)="set('seed', $any($event.target).value.trim())" />
+  </div>
+  <div class="st-row">
+    <button type="button" class="st-btn" (click)="roll()">{{ 'Roll a new one' | t }}</button>
+    <button type="button" class="st-btn st-btn--quiet" [disabled]="theme().seedIsDefault" (click)="set('seed', '')">{{ 'Back to the name' | t }}</button>
+  </div>
+</fieldset>
+<fieldset class="st-group">
+  <legend>{{ 'Ink colours' | t }}</legend>
+  <p class="st-hint">{{ 'Swap any ink for your own colour. Readable text colours are worked out for you.' | t }}</p>
+  @for (ink of inkNames; track ink) {
+    <div class="st-row st-row--center st-inkrow">
+      <input type="color" class="st-color" [id]="'st-ink-' + ink" [value]="theme().inks[ink].base.toLowerCase()" (change)="set('palette.' + ink, $any($event.target).value)" />
+      <label class="st-grow" [for]="'st-ink-' + ink">{{ inkLabels[ink] | t }}@if (custom(ink)) {<span class="st-note"> {{ 'custom' | t }}</span>}</label>
+      <button type="button" class="st-btn st-btn--quiet" [disabled]="!custom(ink)" [attr.aria-label]="'Reset {name}' | t: { name: (inkLabels[ink] | t) }" (click)="set('palette.' + ink, null)">{{ 'Reset' | t }}</button>
+    </div>
+  }
+</fieldset>
+<div class="st-field">
+  <label for="st-motion">{{ 'Animation intensity' | t }}</label>
+  <div class="st-row st-row--center">
+    <input type="range" id="st-motion" class="st-range" min="0" max="100" step="5" [value]="motionPercent()" (input)="set('motion', +$any($event.target).value / 100)" />
+    <output for="st-motion" class="st-note">{{ motionPercent() }}%</output>
+  </div>
+  <p class="st-hint">{{ 'Visitors who prefer reduced motion always get a still page.' | t }}</p>
+</div>
+<div class="st-field">
+  <label for="st-density">{{ 'Visual density' | t }}</label>
+  <select id="st-density" class="st-input" (change)="set('density', $any($event.target).value)">
+    @for (density of densities; track density[0]) {
+      <option [value]="density[0]" [selected]="theme().density === density[0]">{{ density[1] | t }}</option>
+    }
+  </select>
+</div>
+<div class="st-field">
+  <label for="st-hero">{{ 'Opening layout' | t }}</label>
+  <select id="st-hero" class="st-input" (change)="set('layout.hero', $any($event.target).value)">
+    <option value="left" [selected]="theme().layout.hero === 'left'">{{ 'Left' | t }}</option>
+    <option value="center" [selected]="theme().layout.hero === 'center'">{{ 'Centred' | t }}</option>
+  </select>
+</div>
+<div class="st-field">
+  <label for="st-width">{{ 'Content width' | t }}</label>
+  <select id="st-width" class="st-input" (change)="set('layout.width', $any($event.target).value)">
+    <option value="standard" [selected]="theme().layout.width === 'standard'">{{ 'Standard' | t }}</option>
+    <option value="wide" [selected]="theme().layout.width === 'wide'">{{ 'Wide' | t }}</option>
+  </select>
+</div>
+<fieldset class="st-group">
+  <legend>{{ 'Creative effects' | t }}</legend>
+  @for (effect of effects; track effect[0]) {
+    <div class="st-check">
+      <input type="checkbox" [id]="'st-fx-' + effect[0]" [checked]="theme().effects[effect[0]]" (change)="set('effects.' + effect[0], $any($event.target).checked)" />
+      <label [for]="'st-fx-' + effect[0]">{{ effect[1] | t }}</label>
+    </div>
+  }
+</fieldset>

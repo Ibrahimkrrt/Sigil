@@ -1,0 +1,123 @@
+@switch (type()) {
+  @case ('text') {
+    @if (text('text')) {
+      <p class="prose block block--text" sgReveal>{{ text('text') }}</p>
+    }
+  }
+  @case ('richtext') {
+    @if (text('text')) {
+      <p class="prose prose--lead block block--richtext" sgReveal><sg-rich-text [text]="text('text')" /></p>
+    }
+  }
+  @case ('image') {
+    @if (text('src')) {
+      <figure class="fig block block--image" sgReveal>
+        <sg-cv-picture [image]="{ src: text('src'), alt: text('alt'), caption: '' }" [seed]="seed() + text('src')" />
+        @if (text('caption')) {
+          <figcaption>{{ text('caption') }}</figcaption>
+        }
+      </figure>
+    }
+  }
+  @case ('gallery') {
+    @if (read.images(block()); as images) {
+      @if (images.length) {
+        <div class="gallery block block--gallery" sgReveal>
+          @for (image of images; track $index) {
+            <figure class="fig">
+              <sg-cv-picture [image]="image" [seed]="seed() + $index" />
+              @if (image.caption) {
+                <figcaption>{{ image.caption }}</figcaption>
+              }
+            </figure>
+          }
+        </div>
+      }
+    }
+  }
+  @case ('video') {
+    <!-- No source: the block is skipped rather than showing an empty player. -->
+    @if (read.media(block()['src']); as src) {
+      <figure class="fig block block--video" sgReveal>
+        <video controls preload="metadata" playsinline [src]="src" [attr.poster]="read.media(block()['poster'])" [attr.aria-label]="text('title') || ('Video' | t)">
+          @if (read.media(block()['captions']); as captions) {
+            <track kind="captions" default [src]="captions" [attr.srclang]="text('lang') || 'en'" [attr.label]="'Captions' | t" />
+          }
+        </video>
+        @if (text('caption') || text('title')) {
+          <figcaption>{{ text('caption') || text('title') }}</figcaption>
+        }
+      </figure>
+    }
+  }
+  @case ('stats') {
+    @if (read.stats(block()); as stats) {
+      @if (stats.length) {
+        <dl sgStatList class="block block--stats" [stats]="stats"></dl>
+      }
+    }
+  }
+  @case ('timeline') {
+    @if (read.milestones(block()); as items) {
+      @if (items.length) {
+        <ol sgTimelineList class="block block--timeline" [items]="items"></ol>
+      }
+    }
+  }
+  @case ('chart') {
+    @if (chart(); as layout) {
+      <figure sgDataChart class="block block--chart" [chart]="layout"></figure>
+    }
+  }
+  @case ('quote') {
+    @if (text('text')) {
+      <figure class="quote block block--quote" sgReveal>
+        <blockquote><p>{{ text('text') }}</p></blockquote>
+        @if (text('cite')) {
+          <figcaption>{{ text('cite') }}</figcaption>
+        }
+      </figure>
+    }
+  }
+  @case ('links') {
+    @if (read.links(block()); as links) {
+      @if (links.length) {
+        <ul class="links block block--links" sgReveal>
+          @for (link of links; track link.url) {
+            <li><a class="link-row" sgExternalLink [url]="link.url" data-scramble><span data-scramble-text>{{ link.label }}</span><svg sgArrowIcon></svg></a></li>
+          }
+        </ul>
+      }
+    }
+  }
+  @case ('list') {
+    @if (read.lines(block()); as lines) {
+      @if (lines.length) {
+        <ul class="bullets block block--list" sgReveal>
+          @for (line of lines; track $index) {
+            <li><sg-rich-text [text]="line" /></li>
+          }
+        </ul>
+      }
+    }
+  }
+  @case ('viz') {
+    @if (read.viz(block()); as items) {
+      @if (items.length) {
+        <figure sgVizField class="block block--viz" [items]="items" [title]="text('title')" [unit]="text('unit')"></figure>
+      }
+    }
+  }
+  @default {
+    @if (text('title') || text('text')) {
+      <div class="block block--unknown">
+        @if (text('title')) {
+          <h3 class="block__title">{{ text('title') }}</h3>
+        }
+        @if (text('text')) {
+          <p><sg-rich-text [text]="text('text')" /></p>
+        }
+      </div>
+    }
+  }
+}

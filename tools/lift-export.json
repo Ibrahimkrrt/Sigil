@@ -1,0 +1,29 @@
+{
+  "reference": "/home/claude/orbit-cv/src",
+  "out": "/home/claude/sigil-angular/src/app",
+  "jobs": [
+    {
+      "src": "export/pdf.js", "out": "core/export/pdf-writer.ts", "class": "PdfWriter",
+      "header": ["import { Injectable } from '@angular/core';", "", "/**", " * A tagged-PDF writer, lifted from the reference engine: structure tree, bookmarks, links,", " * images with alternative text, and a small drawing surface for designed pages.", " * Values are loosely typed inside; `renderPdf` is its public entry.", " */", "/* eslint-disable @typescript-eslint/no-explicit-any */", "@Injectable({ providedIn: 'root' })"],
+      "public": ["PAGE_SIZES"]
+    },
+    {
+      "src": "export/cv-pdf.js", "out": "core/export/cv-pdf-builder.ts", "class": "CvPdfBuilder",
+      "header": ["import { Injectable, inject } from '@angular/core';", "import { hexToRgb } from '@domain/color/hex-to-rgb';", "import { plainText } from '@domain/text/plain-text';", "import { safeUrl } from '@domain/text/safe-url';", "import { slug } from '@domain/text/slug';", "import { DateFormatter } from '../format/date-formatter';", "import { Translator } from '../i18n/translator';", "import { Signature } from '../signature/signature';", "import { ChapterPainter } from '../theme/chapter-painter';", "import { PdfWriter } from './pdf-writer';", "", "/**", " * Lays a CV out as a PDF, lifted from the reference engine: the plain editions (ATS and", " * accessible) and the designed print edition, alone or with the accessible one appended.", " * Values are loosely typed inside; `buildCvPdf` and `pdfFileName` are its public entries.", " */", "/* eslint-disable @typescript-eslint/no-explicit-any */", "@Injectable({ providedIn: 'root' })"],
+      "prelude": ["private readonly translator = inject(Translator);", "private readonly dates = inject(DateFormatter);", "private readonly signature = inject(Signature);", "private readonly painter = inject(ChapterPainter);", "private readonly writer = inject(PdfWriter);", "private readonly t = (source: string, vars?: Record<string, string | number>): string => this.translator.t(source, vars);", "private readonly fmtRange = (start: string, end: string | null, options: { month?: boolean; present?: string; sep?: string } = {}): string => {", "  const from = start ? this.dates.date(start, !!options.month) : '';", "  const to = end ? this.dates.date(end, !!options.month) : (options.present ?? this.translator.t('today'));", "  if (!from) return end ? to : '';", "  return from === to ? from : `${from}${options.sep ?? this.translator.t(' to ')}${to}`;", "};"],
+      "imports": { "t": "this.t", "plain": "plainText", "safeUrl": "safeUrl", "fmtRange": "this.fmtRange", "slug": "slug", "renderPdf": "this.writer.renderPdf.bind(this.writer)", "textWidth": "this.writer.textWidth", "PAGE_SIZES": "this.writer.PAGE_SIZES", "chapterVars": "this.painter.paint.bind(this.painter)", "hexToRgb": "hexToRgb", "sigilGrid": "this.signature.grid.bind(this.signature)" }
+    },
+    {
+      "src": "export/pdf-images.js", "out": "core/export/pdf-image-loader.ts", "class": "PdfImageLoader",
+      "header": ["import { Injectable, inject } from '@angular/core';", "import { hexToRgb } from '@domain/color/hex-to-rgb';", "import { ChapterPainter } from '../theme/chapter-painter';", "", "/**", " * Prepares images for the PDF writer, lifted from the reference engine: the portrait is", " * cropped square, optionally dithered into the CV's two colours, and handed over as JPEG", " * bytes. Any failure simply means \"no portrait\".", " */", "/* eslint-disable @typescript-eslint/no-explicit-any */", "@Injectable({ providedIn: 'root' })"],
+      "prelude": ["private readonly painter = inject(ChapterPainter);"],
+      "imports": { "chapterVars": "this.painter.paint.bind(this.painter)", "hexToRgb": "hexToRgb" }
+    },
+    {
+      "src": "core/validate.js", "out": "core/cv/validate/cv-validator.ts", "class": "CvValidator",
+      "header": ["import { Injectable, inject } from '@angular/core';", "import { parseDate } from '@domain/text/parse-date';", "import { safeUrl } from '@domain/text/safe-url';", "import { Translator } from '../../i18n/translator';", "import { ARCHETYPES } from '../normalize/archetypes';", "import { BUILT_IN_SECTIONS } from '../normalize/built-in-sections';", "import { BLOCK_TYPES } from './block-types';", "", "/**", " * Checks a CV file and reports what is wrong or doubtful in words a person can act on,", " * lifted from the reference engine. Values are loosely typed inside.", " */", "/* eslint-disable @typescript-eslint/no-explicit-any */", "@Injectable({ providedIn: 'root' })"],
+      "prelude": ["private readonly translator = inject(Translator);", "private readonly t = (source: string, vars?: Record<string, string | number>): string => this.translator.t(source, vars);", "private readonly safe = (value: unknown, options?: { image?: boolean }): string | null => safeUrl(value, !!options?.image);"],
+      "imports": { "t": "this.t", "safeUrl": "this.safe", "BUILT_IN": "BUILT_IN_SECTIONS", "ARCHETYPES": "ARCHETYPES", "parseDate": "parseDate", "BLOCK_TYPES": "BLOCK_TYPES" }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+// Sigil identity: base. Generated from the reference stylesheet by tools/split-styles.py.
+/* Sigil: identity tokens and shared primitives.
+   The identity is a two-colour print: every chapter is one ground and one ink.
+   The custom properties below are re-assigned per chapter by the theme layer;
+   registering them as colours lets the whole page re-ink instead of snapping. */
+
+@property --ground { syntax: '<color>'; inherits: true; initial-value: #0b0b0d; }
+@property --fg { syntax: '<color>'; inherits: true; initial-value: #f2f1ec; }
+@property --fg-soft { syntax: '<color>'; inherits: true; initial-value: #c0bfbb; }
+@property --line { syntax: '<color>'; inherits: true; initial-value: #636360; }
+@property --accent { syntax: '<color>'; inherits: true; initial-value: #ff4a1c; }
+@property --on-accent { syntax: '<color>'; inherits: true; initial-value: #0b0b0d; }
+@property --ink { syntax: '<color>'; inherits: true; initial-value: #ff5a2e; }
+@property --ink-small { syntax: '<color>'; inherits: true; initial-value: #ff5a2e; }
+@property --panel { syntax: '<color>'; inherits: true; initial-value: #1d1d1f; }
+@property --tone { syntax: '<color>'; inherits: true; initial-value: #2a1712; }
+.scv {
+  --ground: #0b0b0d; --fg: #f2f1ec; --fg-soft: #c0bfbb; --line: #636360;
+  --accent: #ff4a1c; --on-accent: #0b0b0d; --ink: #ff5a2e; --ink-small: #ff5a2e; --panel: #1d1d1f; --tone: #2a1712;
+  --font: "Bricolage Grotesque", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --vh: 100vh; --nav-h: 60px; --sp: 1;
+  --pad: clamp(16px, 3.4cqi, 48px);
+  --gut: max(var(--pad), env(safe-area-inset-left, 0px));
+  --gut-r: max(var(--pad), env(safe-area-inset-right, 0px));
+  --snap: cubic-bezier(0.2, 0.8, 0.1, 1);
+  container: scv / inline-size;
+  position: relative;
+  overflow-x: clip;
+  min-height: var(--vh);
+  background: var(--ground);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@supports (height: 100svh) { .scv { --vh: 100svh; } }
+.scv.is-animated { transition: --ground 0.45s ease, --fg 0.45s ease, --fg-soft 0.45s ease, --line 0.45s ease, --accent 0.45s ease, --on-accent 0.45s ease, --ink 0.45s ease, --ink-small 0.45s ease, --panel 0.45s ease, --tone 0.45s ease; }
+.scv[data-density="compact"] { --sp: 0.7; }
+.scv[data-density="spacious"] { --sp: 1.3; }
+.scv *, .scv *::before, .scv *::after { box-sizing: border-box; }
+.scv h1, .scv h2, .scv h3, .scv h4, .scv p, .scv ul, .scv ol, .scv dl, .scv dd, .scv figure, .scv blockquote { margin: 0; }
+.scv ul, .scv ol { padding: 0; list-style: none; }
+.scv strong { font-weight: 700; }
+.scv a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1.5px; }
+:where(.scv) button { font: inherit; letter-spacing: 0; cursor: pointer; border-radius: 0; }
+.scv [hidden] { display: none !important; }
+.scv img, .scv video { display: block; max-width: 100%; }
+.scv :focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+.scv [tabindex="-1"]:focus { outline: none; }
+.scv ::selection { background: var(--accent); color: var(--on-accent); }
+.scv.has-cursor[data-mode="immersive"] :is(dialog, .menu), .scv.has-cursor[data-mode="immersive"] :is(dialog, .menu) * { cursor: auto; }
+.err { max-width: 640px; margin: 0 auto; padding: 20vh 24px; }
+.err h1 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+@keyframes sigil-up { from { opacity: 0; transform: translateY(0.5em); } }
+@media (prefers-reduced-motion: reduce) {
+  .scv, .scv * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+/* Immersive chapters. Layouts respond to the width of the .scv container,
+   so the same CSS serves a phone, a desktop window and the Studio preview. */
+
+.scv__main { position: relative; z-index: 1; }
+@keyframes sigil-rise { from { transform: translateY(105%); } }
+@keyframes sigil-wipe { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+/* ---------- Reveal on scroll (only while the observer runs) ---------- */
+.has-motion [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease var(--d, 0ms), transform 0.7s var(--snap) var(--d, 0ms); }
+.has-motion [data-reveal].is-in { opacity: 1; transform: none; }
+[data-fit-wrap], [data-fit-wrap] .hero__line { white-space: normal; overflow-wrap: anywhere; }
+@keyframes moon-in { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes moon-out { from { clip-path: inset(0 0 0 0); } to { clip-path: inset(0 0 100% 0); } }
+@keyframes moon-drift { from { transform: translateY(-30px); } to { transform: translateY(40px); } }
+@keyframes moon-earth { from { transform: translateY(34%); } to { transform: translateY(66%); } }
+@keyframes moon-rise { from { transform: translateY(-160%); } to { transform: translateY(0); } }
+@keyframes moon-fly {
+  0% { left: var(--fx); top: var(--fy); scale: 1; rotate: -12deg; }
+  55% { left: 46%; top: 30%; scale: 0.7; rotate: 200deg; }
+  100% { left: calc(91% - clamp(96px, 20%, 170px) / 2); top: calc(12% - 8px); scale: 0.5; rotate: 360deg; }
+}
+@keyframes moon-trail { 0% { opacity: 1; scale: 1 0; } 40% { opacity: 1; scale: 1 1; } 100% { opacity: 0; scale: 1 1.4; } }
+/* Stamped on, not faded in: no opacity, so the title never needs a layer of its own over the canvas. */
+@keyframes launch-title { from { visibility: hidden; margin-top: 18px; } 20% { visibility: visible; margin-top: 18px; } to { visibility: visible; margin-top: 0; } }
+@keyframes launch-rattle { from { margin: 0 0 0 0; } to { margin: 2px 0 0 -3px; } }
+@keyframes launch-stand { from { opacity: 0; translate: -50% -60%; } 20% { opacity: 1; } to { opacity: 1; translate: -50% -100%; } }

@@ -1,0 +1,40 @@
+// Sigil identity: matrix. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Roles taken ---------- */
+.matrix { margin-bottom: clamp(36px, 5cqi, 64px); }
+.matrix__cap { margin-bottom: 10px; color: var(--fg-soft); }
+.matrix__scroll { overflow-x: auto; }
+.matrix__grid { min-width: 620px; border: 1px solid var(--fg); }
+.matrix__years, .matrix__row { display: grid; grid-template-columns: minmax(120px, 16%) 1fr; }
+.matrix__row { border-top: 1px solid var(--line); }
+.matrix__axis { display: grid; grid-template-columns: repeat(var(--years), 1fr); }
+.matrix__axis span { padding: 6px 0 6px 6px; border-left: 1px solid var(--line); color: var(--fg-soft); font-size: 0.75rem; }
+.matrix__name { display: flex; align-items: center; padding: 8px 10px; font-weight: 700; }
+.matrix__lane { position: relative; height: calc(14px + 30px * var(--rows, 1)); border-left: 1px solid var(--line); background-image: linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: calc(100% / var(--years)) 100%; }
+.matrix__lane .matrix__bar { position: absolute; top: calc(7px + 30px * var(--row, 0)); height: 30px; display: flex; align-items: center; overflow: hidden; }
+.matrix__lane .matrix__bar span { padding: 0 6px; font-size: 0.6875rem; font-weight: 700; white-space: nowrap; }
+.matrix__bar { border: 1px solid var(--fg); }
+.matrix__bar--0 { background: var(--accent); color: var(--on-accent); }
+.matrix__bar--1 { background: var(--fg); color: var(--ground); }
+.matrix__bar--2 { background: var(--ground); color: var(--fg); }
+.matrix__bar--3 { background: repeating-linear-gradient(45deg, var(--fg) 0 1px, var(--ground) 1px 6px); color: var(--fg); }
+.matrix__bar--3 span { background: var(--ground); }
+.matrix__bar--4 { background: repeating-linear-gradient(90deg, var(--fg) 0 2px, var(--ground) 2px 5px); color: var(--fg); }
+.matrix__bar--4 span { background: var(--ground); }
+.matrix__bar--5 { background: radial-gradient(var(--fg) 1.2px, var(--ground) 1.6px) 0 0 / 6px 6px; color: var(--fg); }
+.matrix__bar--5 span { background: var(--ground); }
+.matrix__legend { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 10px; color: var(--fg-soft); }
+.matrix__legend li { display: inline-flex; align-items: center; gap: 8px; }
+.matrix__legend i { width: 18px; height: 12px; }
+.is-animated .has-motion .matrix:not(.is-in) .matrix__lane .matrix__bar { clip-path: inset(0 100% 0 0); }
+.is-animated .matrix__lane .matrix__bar { clip-path: inset(0 0 0 0); transition: clip-path 0.8s var(--snap) 0.15s; }
+.matrix__row--part { border-top: 1px dashed var(--line); }
+.matrix__row--part .matrix__name { padding-left: 26px; font-weight: 400; font-size: 0.75rem; color: var(--fg-soft); }
+.matrix__row--part .matrix__name::before { content: "\21B3"; margin-right: 6px; }
+.matrix__lane--part { height: calc(8px + 16px * var(--rows, 1)); }
+/* A part's bar is as thick as its share of the work at that company. */
+.matrix__lane--part .matrix__bar { top: calc(4px + 16px * var(--row, 0) + (14px - (4px + 10px * var(--w, 1))) / 2); height: calc(4px + 10px * var(--w, 1)); }
+.matrix__lane--part .matrix__bar span { display: none; }
+.matrix__row--emp .matrix__name { color: var(--fg-soft); font-weight: 400; }
+.matrix__row--emp .matrix__lane { height: 30px; }
+.matrix__row--emp .matrix__lane .matrix__bar { top: 5px; height: 20px; }
+.matrix__bar--emp { background: var(--ground); color: var(--fg); border-style: dashed; }

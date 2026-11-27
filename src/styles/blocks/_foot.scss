@@ -1,0 +1,7 @@
+// Sigil identity: foot. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Footer ---------- */
+.foot { position: relative; }
+.foot__marquee .marquee__item { padding-block: 0.08em; font-family: var(--font); font-stretch: 75%; font-size: clamp(3rem, 11cqi, 9rem); font-weight: 800; line-height: 1; letter-spacing: -0.012em; }
+.foot__marquee .marquee__sep { width: 0.28em; height: 0.28em; }
+.foot__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding: 18px var(--gut-r) calc(18px + env(safe-area-inset-bottom, 0px)) var(--gut); color: var(--fg-soft); }
+.foot__row a { display: inline-flex; align-items: center; min-height: 44px; color: var(--fg); font-weight: 700; }

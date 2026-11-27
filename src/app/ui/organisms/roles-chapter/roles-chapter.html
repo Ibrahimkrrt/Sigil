@@ -1,0 +1,58 @@
+<header sgChapterHeader [chapter]="chapter()" [index]="index()"></header>
+@if (matrix(); as chart) {
+  <figure sgRoleMatrixChart [matrix]="chart"></figure>
+}
+<ol class="rolelist">
+  @for (role of roles(); track role.id; let i = $index) {
+    <li class="rolerow" [class.is-open]="openIndex() === i" #row>
+      <h3 class="rolerow__h">
+        <button type="button" class="rolerow__btn" data-scramble [attr.data-cursor]="'Deep dive' | t" [id]="chapter().id + '-row-' + i" [attr.aria-expanded]="openIndex() === i" [attr.aria-controls]="chapter().id + '-panel-' + i" (click)="toggle(i)">
+          <span class="rolerow__idx" aria-hidden="true">R{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <span class="rolerow__name" data-scramble-text>{{ role.name }}</span>
+          <span class="rolerow__meta"><span>{{ companies(role) }}</span><span>{{ period(role) }}</span></span>
+          <span class="rolerow__plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="rolerow__panel" [id]="chapter().id + '-panel-' + i" role="region" [attr.aria-labelledby]="chapter().id + '-row-' + i" [hidden]="openIndex() !== i">
+        <div class="deep">
+          <div class="deep__side">
+            <div class="pic pic--gen deep__art" data-hover><sg-pattern-tile [seed]="role.id" [pattern]="banners()[i % banners().length]" /></div>
+            <p class="deep__count">{{ (role.engagements.length === 1 ? '{n} company' : '{n} companies') | t: { n: role.engagements.length } }} · {{ period(role) }}</p>
+            @if (role.summary) {
+              <p class="deep__lead"><sg-rich-text [text]="role.summary" /></p>
+            }
+          </div>
+          <div class="deep__main">
+            @for (engagement of role.engagements; track $index) {
+              <article class="deep__co">
+                <h4 class="deep__name">{{ engagement.name }}</h4>
+                <p class="deep__meta">{{ engagementMeta(engagement) }}</p>
+                @if (role.parts.length && engagement.parts.length) {
+                  <ul sgSplitBar [parts]="engagement.parts" small></ul>
+                }
+                @if (engagement.missions.length) {
+                  <ul class="bases">
+                    @for (mission of engagement.missions; track $index; let k = $index) {
+                      <li>
+                        <sg-rich-text [text]="mission" />
+                        @if (missionTags(role, engagement, k); as tags) {
+                          @if (tags.length) {
+                            <span class="tags">
+                              @for (tag of tags; track tag) {
+                                <span class="tag">{{ tag }}</span>
+                              }
+                            </span>
+                          }
+                        }
+                      </li>
+                    }
+                  </ul>
+                }
+              </article>
+            }
+          </div>
+        </div>
+      </div>
+    </li>
+  }
+</ol>

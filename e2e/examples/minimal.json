@@ -1,0 +1,7 @@
+{
+  "profile": { "name": "Sam Rivera", "headline": "Backend Engineer" },
+  "experience": [
+    { "role": "Software Engineer", "company": "Example Co", "start": "2022-01" }
+  ],
+  "skills": ["Go", "PostgreSQL", "Kubernetes"]
+}

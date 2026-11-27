@@ -1,0 +1,31 @@
+// Sigil identity: rolerow. Generated from the reference stylesheet by tools/split-styles.py.
+.rolelist { border-top: 1px solid var(--fg); }
+.rolerow { border-bottom: 1px solid var(--fg); }
+.rolerow__btn { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 6px clamp(14px, 3cqi, 40px); width: 100%; padding: clamp(14px, 2.2cqi, 26px) 6px; border: 0; background: transparent; color: var(--fg); text-align: left; transition: background-color 0.15s, color 0.15s, padding 0.3s var(--snap); }
+.rolerow__btn:hover, .rolerow.is-open .rolerow__btn { background: var(--fg); color: var(--ground); padding-left: clamp(12px, 2cqi, 28px); padding-right: clamp(12px, 2cqi, 28px); }
+.rolerow__idx { align-self: start; padding-top: 0.6em; }
+.rolerow__name { font-size: clamp(2.2rem, 7.6cqi, 6.6rem); overflow-wrap: anywhere; }
+.rolerow__meta { grid-column: 2; display: flex; flex-wrap: wrap; gap: 2px 20px; }
+.rolerow__plus { grid-column: 3; grid-row: 1; position: relative; width: clamp(28px, 4cqi, 48px); aspect-ratio: 1; border: 2px solid currentColor; }
+.rolerow__plus::before, .rolerow__plus::after { content: ""; position: absolute; left: 22%; right: 22%; top: calc(50% - 1px); border-top: 2px solid currentColor; transition: transform 0.3s var(--snap); }
+.rolerow__plus::after { transform: rotate(90deg); }
+.rolerow.is-open .rolerow__plus::after { transform: rotate(0deg); }
+.is-animated .rolerow__panel { animation: sigil-wipe 0.5s steps(10, end) both; }
+.deep { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 28px clamp(28px, 5cqi, 80px); padding: clamp(22px, 4cqi, 48px) 6px clamp(32px, 5cqi, 64px); }
+.deep__side { display: flex; flex-direction: column; gap: 16px; align-self: start; }
+.deep__art { aspect-ratio: 5 / 3; }
+.deep__count { color: var(--fg-soft); }
+.deep__lead { font-size: 1.125rem; }
+.deep__main { display: flex; flex-direction: column; }
+.deep__co { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); grid-template-rows: auto auto 1fr; gap: 10px 32px; padding: 20px 0; border-top: 1px solid var(--line); }
+.deep__co:first-child { border-top: 1px solid var(--fg); }
+.deep__name { font-size: clamp(1.7rem, 3.2cqi, 2.6rem); }
+.deep__meta { grid-column: 1; color: var(--fg-soft); }
+.deep__co .bases { grid-column: 2; grid-row: 1 / span 3; }
+.deep__stack { padding-top: 20px; border-top: 1px solid var(--line); }
+@container scv (max-width: 860px) {
+  .deep, .deep__co { grid-template-columns: minmax(0, 1fr); }
+  .deep__co .bases { grid-column: 1; grid-row: auto; }
+  .deep__art { aspect-ratio: 5 / 2; }
+  .rolerow__meta span:last-child { flex-basis: 100%; }
+}

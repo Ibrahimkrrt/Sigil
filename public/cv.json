@@ -1,0 +1,518 @@
+{
+  "meta": {
+    "lang": "en",
+    "description": "Ibrahim El Karrat, full-stack engineer, lead tech, front expert and DevOps, based in Paris."
+  },
+  "profile": {
+    "name": "Ibrahim El Karrat",
+    "givenName": "Ibrahim",
+    "familyName": "El Karrat",
+    "headline": "Lead Tech, Senior Full Stack Engineer, AI Engineer, DevOps",
+    "tagline": "I bring full-stack depth across Angular, .NET, and cloud infrastructure, and the ability to walk into a complex codebase and **make it better for the team around me**.",
+    "location": "Paris, France",
+    "archetype": "engineer",
+    "summary": [
+      "I've been lucky enough to work across some of France's most demanding broadcast and adtech environments, **TF1, Mediawan, Equativ**, each one raising the bar on what production-grade actually means.",
+      "I bring full-stack depth across Angular, .NET, and cloud infrastructure, and the ability to walk into a complex codebase and make it better for the team around me.",
+      "In 2026, when AI tooling landed on our team, I took on the AI engineering side as well: building agent skills and MCP servers, reviewing AI-generated code, and helping the team get real use out of it. On my own time, I am building an autonomous agent project."
+    ],
+    "facts": [
+      {
+        "label": "Based in",
+        "value": "Paris, France"
+      },
+      {
+        "label": "Status",
+        "value": "Open to opportunities"
+      },
+      {
+        "label": "Current role",
+        "value": "Senior Full Stack Engineer at Equativ"
+      }
+    ],
+    "photo": {
+      "src": "assets/ibrahim-el-karrat.jpg",
+      "alt": "Portrait of Ibrahim El Karrat"
+    }
+  },
+  "contact": {
+    "email": "ibrahim.krrt@gmail.com",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/ibrahim-el-karrat"
+      }
+    ]
+  },
+  "roles": [
+    {
+      "id": "lead",
+      "name": "Lead Tech",
+      "summary": "Setting the technical direction of a team: conventions, workshops, and keeping product and engineering aligned."
+    },
+    {
+      "id": "fullstack",
+      "name": "Senior Full Stack Engineer",
+      "summary": "Building and maintaining applications end to end, from the Angular interface to the .NET services and the database.",
+      "parts": [
+        {
+          "id": "frontend",
+          "name": "Front-End"
+        },
+        {
+          "id": "backend",
+          "name": "Back-End"
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI Engineer",
+      "summary": "Making AI tooling useful to an engineering team at Equativ: agent skills, MCP servers and code review."
+    },
+    {
+      "id": "devops",
+      "name": "DevOps",
+      "summary": "Pipelines, infrastructure as code, and the monitoring that keeps what we ship running."
+    }
+  ],
+  "experience": [
+    {
+      "id": "equativ",
+      "role": "Senior Full Stack Engineer",
+      "company": "Equativ",
+      "location": "Paris",
+      "start": "2024",
+      "end": null,
+      "summary": "Maintaining and modernising a dense internal ecosystem, and helping the team get real use out of AI tooling.",
+      "highlights": [
+        {
+          "text": "Maintained and improved 6 existing projects, some more than 9 years old, and delivered 2 new applications built on the legacy codebase.",
+          "roles": [
+            "frontend",
+            "backend"
+          ]
+        },
+        {
+          "text": "Worked inside a dense internal ecosystem (a custom translation app, a settings app, in-house JavaScript libraries), where understanding how everything connects is a job in itself.",
+          "roles": [
+            "frontend",
+            "backend"
+          ]
+        },
+        {
+          "text": "Became the person the team calls to unblock failing test environments, which means debugging across several services.",
+          "roles": [
+            "backend"
+          ]
+        },
+        {
+          "text": "Wrote coding conventions and architecture guidelines to modernise the team's engineering practices.",
+          "roles": [
+            "frontend",
+            "backend"
+          ]
+        },
+        {
+          "text": "When AI tooling was rolled out company-wide in 2026, helped the team adopt it, with suggestions on how to structure Jira tickets and practical guidelines.",
+          "roles": [
+            "ai"
+          ]
+        },
+        {
+          "text": "Proposed and built internal MCP servers and agent skills, so the AI tooling has the context it needs to work in our codebase.",
+          "roles": [
+            "ai"
+          ]
+        },
+        {
+          "text": "Used AI agents on complex cases that cut across several services and years of legacy code.",
+          "roles": [
+            "ai"
+          ]
+        },
+        {
+          "text": "Reviewed AI-generated contributions for security gaps and design issues before they pile up.",
+          "roles": [
+            "ai"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "value": "6",
+          "label": "existing projects maintained and improved"
+        },
+        {
+          "value": "2",
+          "label": "new applications delivered"
+        }
+      ],
+      "tags": [
+        "Angular",
+        "TypeScript",
+        ".NET",
+        "SQL Server",
+        "PostgreSQL",
+        "GCP",
+        "ArgoCD",
+        "GitLab",
+        "Claude Code",
+        "Jira"
+      ],
+      "roles": [
+        "frontend",
+        "backend"
+      ],
+      "roleSince": {
+        "ai": "2026"
+      }
+    },
+    {
+      "id": "omnilog",
+      "role": "Consultant, Lead Tech",
+      "company": "OMNILOG SAS",
+      "location": "Paris",
+      "start": "2020",
+      "end": "2024",
+      "summary": "Engineering services company (ESN). Two client missions, TF1 then Mediawan, alongside responsibilities for OMNILOG itself.",
+      "roles": [
+        "lead"
+      ],
+      "highlights": [
+        {
+          "text": "Trained and mentored other OMNILOG engineers.",
+          "roles": [
+            "lead"
+          ]
+        },
+        {
+          "text": "Carried out technical assessments on behalf of OMNILOG.",
+          "roles": [
+            "lead"
+          ]
+        },
+        {
+          "text": "Discussed the scope and direction of my roles directly with client management.",
+          "roles": [
+            "lead"
+          ]
+        }
+      ],
+      "tags": []
+    },
+    {
+      "id": "mediawan",
+      "role": "Senior Fullstack Dev, Backend Expert",
+      "company": "Mediawan",
+      "location": "Paris",
+      "start": "2023",
+      "end": "2024",
+      "summary": "",
+      "highlights": [
+        {
+          "text": "Designed and built an internal automation platform from scratch, on my own, which cut the team's manual back-end work.",
+          "roles": [
+            "backend",
+            "frontend"
+          ]
+        },
+        {
+          "text": "Ran the Agile ceremonies and internal training sessions.",
+          "roles": [
+            "lead"
+          ]
+        },
+        {
+          "text": "Became the person to ask about difficult back-end problems.",
+          "roles": [
+            "backend"
+          ]
+        }
+      ],
+      "tags": [
+        ".NET",
+        "Agile",
+        "Automation",
+        "Backend Architecture"
+      ],
+      "employer": "OMNILOG SAS"
+    },
+    {
+      "id": "tf1",
+      "role": "Fullstack Dev, Lead Tech, Front Expert",
+      "company": "TF1",
+      "location": "Paris",
+      "start": "2020",
+      "end": "2023",
+      "summary": "",
+      "highlights": [
+        {
+          "text": "Rewrote the core ad engine of the TF1 group, a monolith that runs every night, moving it from a legacy desktop application to a web platform.",
+          "roles": [
+            "frontend",
+            "backend"
+          ]
+        },
+        {
+          "text": "Built a single Design System for the ad department.",
+          "roles": [
+            "frontend"
+          ]
+        },
+        {
+          "text": "Ran Coding Kata workshops to bring 10 to 15 engineers up to speed on Angular.",
+          "roles": [
+            "lead"
+          ]
+        },
+        {
+          "text": "Kept product managers, product owners and developers aligned, settled disagreements and set the technical guardrails.",
+          "roles": [
+            "lead"
+          ]
+        },
+        {
+          "text": "Delivered 6 applications to production: 5 internal and 1 external.",
+          "roles": [
+            "frontend",
+            "backend",
+            "devops"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "value": "6",
+          "label": "applications in production (5 internal, 1 external)"
+        }
+      ],
+      "tags": [
+        "Angular",
+        "TypeScript",
+        ".NET",
+        "SQL Server",
+        "YAML",
+        "Terraform (IaC)",
+        "Azure DevOps",
+        "Azure Portal",
+        "Datadog",
+        "CyberArk"
+      ],
+      "employer": "OMNILOG SAS"
+    },
+    {
+      "id": "capgemini",
+      "role": "Full Stack and DevOps Developer",
+      "company": "Capgemini",
+      "location": "Paris",
+      "start": "2019",
+      "end": "2019",
+      "highlights": [
+        {
+          "text": "Picked up a project nobody on the team wanted, evaluated the Blazor framework and presented the findings to more than 30 .NET engineers.",
+          "roles": [
+            "frontend",
+            "backend"
+          ]
+        },
+        {
+          "text": "Contributed to 2 major projects: EsiGate and the Electron framework.",
+          "roles": [
+            "frontend",
+            "backend",
+            "devops"
+          ]
+        }
+      ],
+      "stats": [
+        {
+          "value": "30+",
+          "label": ".NET engineers presented to"
+        }
+      ],
+      "tags": [
+        "EsiGate",
+        "PowerApps",
+        "Java 8",
+        "Electron",
+        "Node.js",
+        "Angular",
+        "ASP.NET Core",
+        "Blazor",
+        "WebAssembly",
+        "Swagger",
+        "IIS",
+        "SQL Server",
+        "Spring Boot"
+      ]
+    },
+    {
+      "id": "koden",
+      "role": "Full Stack Developer (internship)",
+      "company": "KODEN",
+      "start": "2018",
+      "end": "2018",
+      "summary": "Internship.",
+      "highlights": [
+        {
+          "text": "As an intern, modernised internal software that the full-time developers had not had time for. It taught me that treating every task as if it matters is the simplest way to earn a team's trust.",
+          "roles": [
+            "frontend",
+            "backend"
+          ]
+        }
+      ],
+      "tags": [
+        "ASP.NET Framework",
+        "ASP.NET Core",
+        "SQL Server",
+        "Entity Framework",
+        "Autofac",
+        "AutoMapper",
+        "Bootstrap 4",
+        "JavaScript"
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "value": "4",
+      "label": "positions held, **often at the same time**: Lead Tech, Full Stack, AI Engineer, DevOps"
+    },
+    {
+      "value": "8",
+      "label": "applications **delivered to production**: 6 at TF1, 2 at Equativ"
+    },
+    {
+      "value": "6",
+      "label": "legacy projects **maintained and improved** at Equativ"
+    },
+    {
+      "value": "9+",
+      "label": "years old: the **oldest codebase** I maintain"
+    }
+  ],
+  "skills": {
+    "technical": [
+      {
+        "name": "Angular",
+        "group": "Core Expertise"
+      },
+      {
+        "name": "TypeScript",
+        "group": "Core Expertise"
+      },
+      {
+        "name": "JavaScript",
+        "group": "Core Expertise"
+      },
+      {
+        "name": "Front Expert (accessibility-oriented)",
+        "group": "Core Expertise"
+      },
+      {
+        "name": "Backend Expert",
+        "group": "Core Expertise"
+      },
+      {
+        "name": "Lead Tech",
+        "group": "Core Expertise"
+      },
+      {
+        "name": "Claude Code",
+        "group": "Next-Gen Dev"
+      },
+      {
+        "name": "Model Context Protocol (MCP)",
+        "group": "Next-Gen Dev"
+      },
+      {
+        "name": "Agent Skills Architecture",
+        "group": "Next-Gen Dev"
+      },
+      {
+        "name": "Context Engineering",
+        "group": "Next-Gen Dev"
+      },
+      {
+        "name": "AI Code Review",
+        "group": "Next-Gen Dev"
+      },
+      {
+        "name": "Prompt Optimization",
+        "group": "Next-Gen Dev"
+      },
+      {
+        "name": ".NET Framework",
+        "group": "Infrastructure"
+      },
+      {
+        "name": ".NET Core",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "SQL Server",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "PostgreSQL",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "GCP",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "ArgoCD",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "GitLab",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "Terraform (IaC)",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "Azure DevOps",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "Datadog",
+        "group": "Infrastructure"
+      },
+      {
+        "name": "CyberArk",
+        "group": "Infrastructure"
+      }
+    ]
+  },
+  "education": [
+    {
+      "degree": "Engineering Degree certified by CTI, Software Engineering",
+      "school": "Efrei, Graduate School of Engineering in Computer Science",
+      "start": "2017",
+      "end": "2019"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Distributed Programming in Java"
+    },
+    {
+      "title": "Computer and Network Engineering (Licence)"
+    }
+  ],
+  "theme": {
+    "mode": "mixed",
+    "lead": "electric",
+    "density": "comfortable",
+    "motion": 0.8,
+    "pdf": {
+      "ground": "ink",
+      "photo": "photo"
+    }
+  }
+}

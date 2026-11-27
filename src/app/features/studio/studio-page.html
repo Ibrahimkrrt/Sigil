@@ -1,0 +1,43 @@
+<header class="st-bar">
+  <div class="st-brand">
+    <span class="st-logo" aria-hidden="true"></span>
+    <h1>{{ 'Sigil Studio' | t }}</h1>
+    <span class="st-file">{{ store.fileName() }}</span>
+  </div>
+  <div class="st-actions">
+    <input #file id="st-file" type="file" accept=".json,application/json" class="sr-only" tabindex="-1" [attr.aria-label]="'Upload a CV JSON file' | t" (change)="upload(file)" />
+    <button type="button" class="st-btn" (click)="file.click()">{{ 'Upload JSON' | t }}</button>
+    <button type="button" class="st-btn" (click)="paste()">{{ 'Paste JSON' | t }}</button>
+    <button type="button" class="st-btn" (click)="loadDemo()">{{ 'Load demo' | t }}</button>
+    <button type="button" class="st-status" [attr.data-state]="store.report().errors.length ? 'error' : 'ok'" (click)="showIssues()">{{ status() }}</button>
+    <div class="st-seg" role="group" [attr.aria-label]="'Language' | t">
+      @for (language of languages; track language[0]) {
+        <button type="button" class="st-seg__btn" [attr.lang]="language[0]" [attr.aria-pressed]="store.lang() === language[0]" (click)="store.lang.set(language[0])">
+          {{ language[0].toUpperCase() }}<span class="sr-only"> {{ language[1] }}</span>
+        </button>
+      }
+    </div>
+    <button type="button" class="st-btn st-btn--primary" (click)="select('export', true)">{{ 'Export' | t }}</button>
+  </div>
+</header>
+<main class="st-body">
+  <div class="st-side">
+    <div class="st-tabs" role="tablist" [attr.aria-label]="'Editor' | t">
+      @for (tab of tabs; track tab[0]; let i = $index) {
+        <button type="button" role="tab" class="st-tab" [id]="'st-tab-' + tab[0]" [attr.aria-controls]="'st-panel-' + tab[0]" [attr.aria-selected]="store.tab() === tab[0]" [tabIndex]="store.tab() === tab[0] ? 0 : -1" (click)="select(tab[0])" (keydown.arrowRight)="step(i, 1)" (keydown.arrowLeft)="step(i, -1)">
+          {{ tab[1] | t }}
+        </button>
+      }
+    </div>
+    <div class="st-panels">
+      <div class="st-panel" role="tabpanel" id="st-panel-content" aria-labelledby="st-tab-content" tabindex="0" [hidden]="store.tab() !== 'content'"><sg-studio-content-editor /></div>
+      <div class="st-panel" role="tabpanel" id="st-panel-sections" aria-labelledby="st-tab-sections" tabindex="0" [hidden]="store.tab() !== 'sections'"><sg-studio-sections-editor /></div>
+      <div class="st-panel" role="tabpanel" id="st-panel-theme" aria-labelledby="st-tab-theme" tabindex="0" [hidden]="store.tab() !== 'theme'"><sg-studio-theme-editor /></div>
+      <div class="st-panel" role="tabpanel" id="st-panel-assets" aria-labelledby="st-tab-assets" tabindex="0" [hidden]="store.tab() !== 'assets'"><sg-studio-assets-editor /></div>
+      <div class="st-panel" role="tabpanel" id="st-panel-json" aria-labelledby="st-tab-json" tabindex="0" [hidden]="store.tab() !== 'json'"><sg-studio-json-editor /></div>
+      <div class="st-panel" role="tabpanel" id="st-panel-export" aria-labelledby="st-tab-export" tabindex="0" [hidden]="store.tab() !== 'export'"><sg-studio-export-panel /></div>
+    </div>
+  </div>
+  <sg-studio-preview />
+</main>
+<p class="sr-only" role="status" aria-live="polite" aria-atomic="true">{{ announcer.message() }}</p>

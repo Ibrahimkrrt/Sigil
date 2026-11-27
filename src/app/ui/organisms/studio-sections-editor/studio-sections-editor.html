@@ -1,0 +1,53 @@
+<p class="st-hint">{{ 'Order, visibility and ink for each chapter. The opening always comes first. Left on Auto, inks rotate so each chapter commits to one.' | t }}</p>
+<ol class="st-secs">
+  @for (section of sections(); track section.id; let i = $index) {
+    <li class="st-sec" [attr.data-hidden]="section.hidden ? '' : null">
+      <div class="st-sec__head">
+        <span class="st-dot" aria-hidden="true" [style.background]="dot(section)"></span>
+        <strong>{{ section.nav }}</strong>
+        <span class="st-note">{{ section.builtIn ? section.type : ('custom' | t) }}</span>
+        <button type="button" class="st-icon" [attr.aria-label]="'Move {name} up' | t: { name: section.nav }" [disabled]="section.type === 'hero' || i <= 1" (click)="move(i, -1)">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 10l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <button type="button" class="st-icon" [attr.aria-label]="'Move {name} down' | t: { name: section.nav }" [disabled]="section.type === 'hero' || i === sections().length - 1" (click)="move(i, 1)">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+      </div>
+      @if (section.type !== 'hero') {
+        <details class="st-sec__more">
+          <summary>{{ 'Options' | t }}</summary>
+          <div class="st-check">
+            <input type="checkbox" [id]="'st-vis-' + i" [checked]="!section.hidden" (change)="patch(i, 'visible', $any($event.target).checked ? null : false)" />
+            <label [for]="'st-vis-' + i">{{ 'Visible' | t }}</label>
+          </div>
+          <div class="st-field">
+            <label [for]="'st-title-' + i">{{ 'Title' | t }}</label>
+            <input type="text" class="st-input" [id]="'st-title-' + i" [value]="option(section, 'title')" [placeholder]="section.title" (change)="patch(i, 'title', $any($event.target).value)" />
+            <p class="st-hint">{{ 'Wrap one phrase in *asterisks* to set it in the chapter ink.' | t }}</p>
+          </div>
+          <div class="st-row">
+            <div class="st-field st-field--sm">
+              <label [for]="'st-ink-' + i">{{ 'Ink' | t }}</label>
+              <select class="st-input" [id]="'st-ink-' + i" (change)="patch(i, 'accent', $any($event.target).value)">
+                <option value="" [selected]="!option(section, 'accent')">{{ 'Auto' | t }}</option>
+                @for (ink of inkNames; track ink) {
+                  <option [value]="ink" [selected]="option(section, 'accent') === ink">{{ inkLabels[ink] | t }}</option>
+                }
+              </select>
+            </div>
+            <div class="st-field st-field--sm">
+              <label [for]="'st-ground-' + i">{{ 'Ground' | t }}</label>
+              <select class="st-input" [id]="'st-ground-' + i" (change)="patch(i, 'ground', $any($event.target).value)">
+                <option value="" [selected]="!option(section, 'ground')">{{ 'Auto' | t }}</option>
+                @for (ground of groundNames; track ground) {
+                  <option [value]="ground" [selected]="option(section, 'ground') === ground">{{ groundLabels[ground] | t }}</option>
+                }
+              </select>
+            </div>
+          </div>
+        </details>
+      }
+    </li>
+  }
+</ol>
+<button type="button" class="st-btn" (click)="reset()">{{ 'Reset to automatic order' | t }}</button>

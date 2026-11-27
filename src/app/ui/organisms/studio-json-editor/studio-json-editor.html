@@ -1,0 +1,24 @@
+<div class="st-field">
+  <label for="st-json">{{ 'CV JSON' | t }}</label>
+  <textarea #area id="st-json" class="st-input st-code" spellcheck="false" rows="22" aria-describedby="st-json-msg" (input)="typed(area.value)"></textarea>
+  <p class="st-hint" id="st-json-msg" role="status" [attr.data-state]="message()?.error ? 'error' : 'ok'">{{ message()?.text }}</p>
+</div>
+<div class="st-row">
+  <button type="button" class="st-btn" (click)="format()">{{ 'Format' | t }}</button>
+  <button type="button" class="st-btn" (click)="copy()">{{ 'Copy' | t }}</button>
+</div>
+<div class="st-issues" id="st-issues">
+  <h2 class="st-h2">{{ 'Validation' | t }}</h2>
+  @if (store.report().errors.length + store.report().warnings.length) {
+    <ul class="st-issuelist">
+      @for (issue of store.report().errors; track $index) {
+        <li class="st-issue st-issue--error"><strong>{{ 'Error' | t }}</strong>@if (issue.path) {<code>{{ issue.path }}</code>}<span>{{ issue.message }}</span></li>
+      }
+      @for (issue of store.report().warnings; track $index) {
+        <li class="st-issue st-issue--hint"><strong>{{ 'Hint' | t }}</strong>@if (issue.path) {<code>{{ issue.path }}</code>}<span>{{ issue.message }}</span></li>
+      }
+    </ul>
+  } @else {
+    <p class="st-hint">{{ 'No issues found.' | t }}</p>
+  }
+</div>

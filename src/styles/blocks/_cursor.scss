@@ -1,0 +1,10 @@
+// Sigil identity: cursor. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Pointer ---------- */
+.cursor { position: fixed; left: 0; top: 0; z-index: 90; display: flex; align-items: center; justify-content: center; width: 14px; height: 14px; margin: -7px 0 0 -7px; background: #ffffff; mix-blend-mode: difference; pointer-events: none; opacity: 0; transition: width 0.2s var(--snap), height 0.2s var(--snap), margin 0.2s var(--snap), opacity 0.2s; }
+.cursor.is-on { opacity: 1; }
+.cursor.is-link { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+.cursor.is-label { width: 20px; height: 20px; margin: -10px 0 0 -10px; outline: 2px solid #ffffff; outline-offset: 3px; }
+.cursor__label { position: fixed; left: 0; top: 0; z-index: 90; margin: 22px 0 0 22px; padding: 6px 10px; background: #f2f1ec; color: #0b0b0d; border: 1px solid #0b0b0d; font-weight: 700; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; }
+.cursor__label.is-on { opacity: 1; }
+.scv[data-mode="recruiter"] .cursor__label { display: none; }
+.scv[data-mode="recruiter"] .cursor { display: none; }

@@ -1,0 +1,47 @@
+<a class="nav__brand" [href]="'#' + topId()">
+  <svg sgSigilMark class="nav__sigil" [seed]="seed()"></svg>
+  <span class="nav__name">{{ name() }}</span>
+  <span class="sr-only">{{ ', back to the top' | t }}</span>
+</a>
+<span class="nav__now" aria-hidden="true">{{ now() }}</span>
+<nav class="nav__nav" id="sigil-nav-links" [attr.aria-label]="'Sections' | t">
+  <ul class="nav__links" #list>
+    @for (link of links(); track link.id) {
+      <li [style.--k]="$index">
+        <a class="nav__link" data-scramble [href]="'#' + link.id" [attr.aria-current]="link.id === currentId() ? 'true' : null" (click)="closeMenu()">
+          <span class="nav__n" aria-hidden="true">{{ ($index + 1).toString().padStart(2, '0') }}</span>
+          <span data-scramble-text>{{ link.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
+@if (languages().length > 1) {
+  <div class="seg seg--lang" role="group" [attr.aria-label]="'Language' | t">
+    @for (option of languages(); track option.value) {
+      <button type="button" class="seg__btn" [attr.lang]="option.value" [attr.aria-pressed]="option.value === lang()" (click)="lang.set(option.value)">
+        {{ option.label }}<span class="sr-only"> {{ option.title }}</span>
+      </button>
+    }
+  </div>
+}
+<div class="seg seg--mode" role="group" [attr.aria-label]="'Presentation mode' | t">
+  @for (option of modes(); track option.value) {
+    <button type="button" class="seg__btn" [attr.data-mode]="option.value" [attr.aria-pressed]="option.value === mode()" (click)="mode.set(option.value)">
+      {{ option.label }}
+    </button>
+  }
+</div>
+@if (pausable()) {
+  <button type="button" class="motionbtn" [attr.aria-pressed]="motion.paused()" (click)="togglePause()">
+    <span class="motionbtn__ico" aria-hidden="true"></span>
+    <span class="sr-only">{{ (motion.paused() ? 'Play motion' : 'Pause motion') | t }}</span>
+  </button>
+}
+<button type="button" class="nav__menu" #menu [attr.aria-expanded]="open()" aria-controls="sigil-nav-links" (click)="toggleMenu()">
+  <span>{{ (open() ? 'Close' : 'Menu') | t }}</span>
+  <span class="nav__burger" aria-hidden="true"></span>
+</button>
+@if (progress() !== null) {
+  <span class="nav__progress" aria-hidden="true" [style.--p]="progress()"></span>
+}

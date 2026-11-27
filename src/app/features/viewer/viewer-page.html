@@ -1,0 +1,36 @@
+@if (store.model(); as model) {
+  <a class="skip" href="#sigil-main">{{ 'Skip to content' | t }}</a>
+  <header
+    sgSiteNav
+    [name]="model.profile.name"
+    [seed]="model.theme.seed"
+    [topId]="store.mode() === 'recruiter' ? 'rec-title' : (store.chapters()[0]?.id ?? '')"
+    [links]="links()"
+    [currentId]="store.mode() === 'immersive' ? (activeChapter()?.id ?? null) : null"
+    [now]="now()"
+    [progress]="store.mode() === 'immersive' ? tracker.progress() : null"
+    [languages]="languageOptions()"
+    [lang]="store.lang()"
+    (langChange)="useLanguage($event)"
+    [mode]="store.mode()"
+    (modeChange)="show($event)"
+    [pausable]="pausable()"
+  ></header>
+  <main id="sigil-main" tabindex="-1" class="sg-contents">
+    @if (store.mode() === 'immersive') {
+      <sg-immersive-story [model]="model" [chapters]="store.chapters()"><sg-download-menu contactActions [model]="model" /></sg-immersive-story>
+    } @else {
+      <sg-recruiter-document class="scv__rec" [model]="model"><sg-download-menu recruiterActions [model]="model" /></sg-recruiter-document>
+    }
+  </main>
+  <p class="sr-only" role="status" aria-live="polite" aria-atomic="true">{{ announcer.message() }}</p>
+  @if (titles() && model.theme.effects.intro) {
+    <sg-intro-titles [name]="model.profile.name" [seed]="model.theme.seed" [code]="model.theme.code" (finished)="ready.set(true)" (gone)="titles.set(false)" />
+  }
+} @else if (loader.error(); as message) {
+  <main class="err" role="alert">
+    <h1>{{ 'This CV could not be loaded' | t }}</h1>
+    <p>{{ message }}</p>
+    <p>{{ 'Check that cv.json sits next to this page and contains valid JSON.' | t }}</p>
+  </main>
+}

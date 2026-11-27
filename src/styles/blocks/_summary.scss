@@ -1,0 +1,14 @@
+// Sigil identity: summary. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Profile ---------- */
+.statement { max-width: 22ch; font-size: clamp(2rem, 6.2cqi, 5.4rem); font-stretch: 75%; font-weight: 800; line-height: 0.98; letter-spacing: -0.012em; text-wrap: balance; }
+.statement.is-reading .w { color: var(--fg-soft); }
+.statement.is-reading .w.is-read { color: var(--fg); }
+.statement.is-reading .w.is-read:not(:has(~ .w.is-read ~ .w.is-read ~ .w.is-read)) { background: var(--accent); color: var(--on-accent); box-shadow: 0.12em 0 0 var(--accent), -0.12em 0 0 var(--accent); }
+.statement .w--b { text-decoration: underline; text-decoration-thickness: 0.06em; text-underline-offset: 0.12em; }
+.facts { align-self: start; border-top: 1px solid var(--fg); }
+.fact { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.fact dt { color: var(--fg-soft); }
+.fact dd { font-weight: 700; text-align: right; }
+.quote { max-width: 30ch; margin-top: clamp(40px, 6cqi, 80px); padding-left: 24px; border-left: 10px solid var(--accent); }
+.quote blockquote p { font-size: clamp(1.5rem, 3.4cqi, 2.6rem); font-stretch: 75%; font-weight: 700; line-height: 1.08; text-wrap: balance; }
+.quote figcaption { margin-top: 14px; color: var(--fg-soft); }

@@ -1,0 +1,35 @@
+<header sgChapterHeader [chapter]="chapter()" [index]="index()"></header>
+@if (statement().length) {
+  <p class="statement" data-words>
+    @for (word of statement(); track $index) {
+      <span class="w" [class.w--b]="word.bold">{{ word.text }}</span>{{ ' ' }}
+    }
+  </p>
+}
+<div class="cols">
+  @if (rest().length) {
+    <div class="cols__text">
+      @for (paragraph of rest(); track $index) {
+        <p class="prose" [sgReveal]="$index"><sg-rich-text [text]="paragraph" /></p>
+      }
+    </div>
+  }
+  @if (profile().facts.length) {
+    <dl class="facts">
+      @for (fact of profile().facts; track $index) {
+        <div class="fact" [sgReveal]="$index">
+          <dt>{{ fact.label }}</dt>
+          <dd>{{ fact.value }}</dd>
+        </div>
+      }
+    </dl>
+  }
+</div>
+@if (profile().quote; as quote) {
+  <figure class="quote" sgReveal>
+    <blockquote><p>{{ quote.text }}</p></blockquote>
+    @if (quote.cite) {
+      <figcaption>{{ quote.cite }}</figcaption>
+    }
+  </figure>
+}

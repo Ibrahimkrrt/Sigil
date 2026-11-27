@@ -1,0 +1,15 @@
+// Sigil identity: row. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Rows: education, awards ---------- */
+.rows { border-top: 1px solid var(--fg); }
+.row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding: 16px 6px; border-bottom: 1px solid var(--line); transition: background-color 0.15s, color 0.15s, padding 0.3s var(--snap); }
+.row:hover { background: var(--fg); color: var(--ground); padding-inline: 16px; }
+.row:hover .row__sub, .row:hover .row__when { color: inherit; }
+.row > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.row__title { font-size: 1.2rem; line-height: 1.2; }
+.row__sub, .row__when { color: var(--fg-soft); }
+.row__detail { font-size: 1rem; }
+.row__when { flex: none; }
+.rows--lg .row__title { font-size: clamp(1.7rem, 4.4cqi, 3.4rem); }
+.biglist { display: flex; flex-wrap: wrap; gap: 0.12em 0.5em; font-size: clamp(2.2rem, 6.4cqi, 5.6rem); }
+.biglist li { display: inline-flex; align-items: center; gap: 0.5em; }
+.biglist li + li::before { content: ""; width: 0.22em; height: 0.22em; background: var(--accent); }

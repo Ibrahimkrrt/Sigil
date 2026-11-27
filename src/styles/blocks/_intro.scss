@@ -1,0 +1,10 @@
+// Sigil identity: intro. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Opening titles ---------- */
+.intro { position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column; justify-content: flex-end; background: var(--ground); color: var(--fg); transition: transform 0.65s var(--snap); }
+.intro.is-done { transform: translateY(-101%); }
+.intro__bar { position: absolute; inset: 0; background: var(--accent); transform-origin: bottom; transform: scaleY(var(--p, 0)); }
+.intro__row { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: var(--pad); mix-blend-mode: difference; color: #ffffff; }
+.intro__name { font-size: clamp(2.4rem, 9vw, 8rem); }
+.intro__count { font-size: clamp(1.2rem, 3vw, 2.4rem); font-weight: 700; }
+.intro__mark { position: absolute; left: var(--pad); top: var(--pad); mix-blend-mode: difference; color: #ffffff; }
+.intro__mark .sigil { width: clamp(64px, 12vw, 140px); height: auto; aspect-ratio: 1; background: transparent; fill: #ffffff; }

@@ -1,0 +1,10 @@
+{
+  "meta": { "demo": true },
+  "profile": { "name": "Ada Example", "headline": "Product Designer", "photo": { "src": "assets/not-uploaded.jpg", "alt": "Portrait of Ada Example" } },
+  "projects": [
+    { "title": "Project with a missing image", "summary": "The image file was never uploaded.", "image": { "src": "assets/missing.png", "alt": "Missing" } },
+    { "title": "Project with an unsafe image", "summary": "The source is not an allowed URL.", "image": { "src": "javascript:alert(1)", "alt": "Unsafe" } },
+    { "title": "Project with no image", "summary": "Nothing was supplied." }
+  ],
+  "customSections": [{ "id": "extras", "title": "Extras", "blocks": [{ "type": "image", "src": "assets/also-missing.webp", "alt": "Missing" }, { "type": "gallery", "items": ["assets/g1.png", "assets/g2.png"] }] }]
+}

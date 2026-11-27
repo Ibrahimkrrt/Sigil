@@ -1,0 +1,8 @@
+// Sigil identity: tl. Generated from the reference stylesheet by tools/split-styles.py.
+/* ---------- Milestones ---------- */
+.tl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); border-top: 1px solid var(--fg); border-left: 1px solid var(--fg); }
+.tl__item { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 26px; border-right: 1px solid var(--fg); border-bottom: 1px solid var(--fg); }
+.tl__dot { width: 12px; height: 12px; background: var(--accent); }
+.tl__date { font-size: 1rem; font-weight: 700; color: var(--ink-small); }
+.tl__title { font-size: 1.35rem; font-stretch: 75%; font-weight: 800; line-height: 1.05; text-transform: uppercase; }
+.tl__text { color: var(--fg-soft); }
